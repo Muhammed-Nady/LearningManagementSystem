@@ -1,0 +1,144 @@
+﻿using LearningManagementSystem.Core.Models.Entities;
+using LearningManagementSystem.Core.Models.Enums;
+using Microsoft.EntityFrameworkCore;
+
+namespace LearningManagementSystem.Infrastructrue.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        // DbSets for all entities
+        public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Progress> ProgressRecords { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+
+        // Configuration passed via constructor
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Entity configurations will be added here
+            // For now, we'll add basic configurations
+
+            // User configuration
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.UserId);
+                entity.HasIndex(e => e.Email).IsUnique();
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(256);
+                entity.Property(e => e.FirstName).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);
+            });
+
+            // Category configuration
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasKey(e => e.CategoryId);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
+            });
+
+            // Course configuration
+            modelBuilder.Entity<Course>(entity =>
+            {
+                entity.HasKey(e => e.CourseId);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.Description).IsRequired();
+                entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
+
+                // Relationships
+                entity.HasOne(e => e.Instructor)
+                    .WithMany(u => u.CoursesAsInstructor)
+                    .HasForeignKey(e => e.InstructorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Category)
+                    .WithMany(c => c.Courses)
+                    .HasForeignKey(e => e.CategoryId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Section configuration
+            modelBuilder.Entity<Section>(entity =>
+            {
+                entity.HasKey(e => e.SectionId);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+
+                entity.HasOne(e => e.Course)
+                    .WithMany(c => c.Sections)
+                    .HasForeignKey(e => e.CourseId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Lesson configuration
+            modelBuilder.Entity<Lesson>(entity =>
+            {
+                entity.HasKey(e => e.LessonId);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+
+                entity.HasOne(e => e.Section)
+                    .WithMany(s => s.Lessons)
+                    .HasForeignKey(e => e.SectionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Enrollment configuration
+            modelBuilder.Entity<Enrollment>(entity =>
+            {
+                entity.HasKey(e => e.EnrollmentId);
+                entity.HasIndex(e => new { e.StudentId, e.CourseId }).IsUnique();
+                entity.Property(e => e.ProgressPercentage).HasColumnType("decimal(5,2)");
+
+                entity.HasOne(e => e.Student)
+                    .WithMany(u => u.Enrollments)
+                    .HasForeignKey(e => e.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Course)
+                    .WithMany(c => c.Enrollments)
+                    .HasForeignKey(e => e.CourseId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Progress configuration
+            modelBuilder.Entity<Progress>(entity =>
+            {
+                entity.HasKey(e => e.ProgressId);
+                entity.HasIndex(e => new { e.StudentId, e.LessonId }).IsUnique();
+
+                entity.HasOne(e => e.Student)
+                    .WithMany(u => u.ProgressRecords)
+                    .HasForeignKey(e => e.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Lesson)
+                    .WithMany(l => l.ProgressRecords)
+                    .HasForeignKey(e => e.LessonId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Review configuration
+            modelBuilder.Entity<Review>(entity =>
+            {
+                entity.HasKey(e => e.ReviewId);
+                entity.HasIndex(e => new { e.CourseId, e.StudentId }).IsUnique();
+                entity.Property(e => e.Rating).IsRequired();
+
+                entity.HasOne(e => e.Course)
+                    .WithMany(c => c.Reviews)
+                    .HasForeignKey(e => e.CourseId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(e => e.Student)
+                    .WithMany(u => u.Reviews)
+                    .HasForeignKey(e => e.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+        }
+    }
+}

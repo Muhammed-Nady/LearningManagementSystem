@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningManagementSystem.MVC", "LearningManagementSystem.MVC\LearningManagementSystem.MVC.csproj", "{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.copilot-instructions.md = .copilot-instructions.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		LMS_Requirements.md = LMS_Requirements.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningManagementSystem.API", "LearningManagementSystem.API\LearningManagementSystem.API.csproj", "{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningManagementSystem.Core", "LearningManagementSystem.Core\LearningManagementSystem.Core.csproj", "{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningManagementSystem.Infrastructrue", "LearningManagementSystem.Infrastructrue\LearningManagementSystem.Infrastructrue.csproj", "{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CF17B9A-A6E9-483C-97D5-90331A7AED8F}
+	EndGlobalSection
+EndGlobal
