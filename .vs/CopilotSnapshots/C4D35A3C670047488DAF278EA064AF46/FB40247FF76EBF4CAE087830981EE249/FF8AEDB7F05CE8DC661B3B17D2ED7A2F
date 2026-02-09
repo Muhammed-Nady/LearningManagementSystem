@@ -1,0 +1,10 @@
+﻿// file: LearningManagementSystem.MVC/Models/Enums/QuestionType.cs
+namespace LearningManagementSystem.MVC.Models.Enums
+{
+    public enum QuestionType
+    {
+        MultipleChoice = 1,
+        TrueFalse = 2,
+        ShortAnswer = 3
+    }
+}

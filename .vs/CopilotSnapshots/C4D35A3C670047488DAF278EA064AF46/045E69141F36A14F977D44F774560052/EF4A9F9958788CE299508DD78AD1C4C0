@@ -1,0 +1,84 @@
+﻿using LearningManagementSystem.Core.DTOs.Common;
+using LearningManagementSystem.Core.Interfaces;
+using LearningManagementSystem.Core.Interfaces.Services;
+using LearningManagementSystem.Core.Models.Entities;
+using LearningManagementSystem.Core.Models.Enums;
+
+namespace LearningManagementSystem.Infrastructrue.Services
+{
+    public class EnrollmentService : IEnrollmentService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+
+public EnrollmentService(IUnitOfWork unitOfWork)
+{
+    _unitOfWork = unitOfWork;
+   }
+
+  public async Task<ResultDto<bool>> EnrollStudentAsync(int studentId, int courseId)
+      {
+ // Validate student
+            var student = await _unitOfWork.Users.GetByIdAsync(studentId);
+     if (student == null || student.Role != UserRole.Student)
+      return ResultDto<bool>.FailureResult("Invalid student");
+
+            // Validate course
+   var course = await _unitOfWork.Courses.GetByIdAsync(courseId);
+            if (course == null || !course.IsPublished)
+  return ResultDto<bool>.FailureResult("Course not available");
+
+      // Check duplicate enrollment
+     var existingEnrollment = await _unitOfWork.Enrollments
+           .FirstOrDefaultAsync(e => e.StudentId == studentId && e.CourseId == courseId);
+
+     if (existingEnrollment != null)
+       return ResultDto<bool>.FailureResult("Already enrolled");
+
+     var enrollment = new Enrollment
+            {
+ StudentId = studentId,
+         CourseId = courseId,
+    EnrolledAt = DateTime.UtcNow,
+          Status = EnrollmentStatus.Active,
+      ProgressPercentage = 0
+      };
+
+            await _unitOfWork.Enrollments.AddAsync(enrollment);
+     await _unitOfWork.SaveChangesAsync();
+
+  return ResultDto<bool>.SuccessResult(true, "Enrolled successfully");
+        }
+
+    public async Task<ResultDto<bool>> UnenrollStudentAsync(int studentId, int courseId)
+        {
+       var enrollment = await _unitOfWork.Enrollments
+  .FirstOrDefaultAsync(e => e.StudentId == studentId && e.CourseId == courseId);
+
+if (enrollment == null)
+    return ResultDto<bool>.FailureResult("Enrollment not found");
+
+  enrollment.Status = EnrollmentStatus.Dropped;
+            _unitOfWork.Enrollments.Update(enrollment);
+          await _unitOfWork.SaveChangesAsync();
+
+       return ResultDto<bool>.SuccessResult(true, "Unenrolled successfully");
+        }
+
+public async Task<ResultDto<bool>> IsStudentEnrolledAsync(int studentId, int courseId)
+        {
+       var isEnrolled = await _unitOfWork.Enrollments
+      .AnyAsync(e => e.StudentId == studentId && e.CourseId == courseId && e.Status == EnrollmentStatus.Active);
+
+ return ResultDto<bool>.SuccessResult(isEnrolled);
+   }
+
+        public async Task<ResultDto<IEnumerable<int>>> GetStudentCourseIdsAsync(int studentId)
+        {
+            var enrollments = await _unitOfWork.Enrollments
+    .FindAsync(e => e.StudentId == studentId && e.Status == EnrollmentStatus.Active);
+
+   var courseIds = enrollments.Select(e => e.CourseId);
+  return ResultDto<IEnumerable<int>>.SuccessResult(courseIds);
+  }
+    }
+}

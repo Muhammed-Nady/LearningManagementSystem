@@ -1,0 +1,12 @@
+﻿// file: LearningManagementSystem.MVC/Models/Enums/ContentType.cs
+namespace LearningManagementSystem.MVC.Models.Enums
+{
+    public enum ContentType
+    {
+        Video = 1,
+        PDF = 2,
+        Text = 3,
+        Quiz = 4,
+        Assignment = 5
+    }
+}

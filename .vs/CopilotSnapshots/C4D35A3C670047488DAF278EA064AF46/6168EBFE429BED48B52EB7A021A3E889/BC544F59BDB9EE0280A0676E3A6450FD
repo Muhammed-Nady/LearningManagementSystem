@@ -1,0 +1,18 @@
+﻿using LearningManagementSystem.MVC.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LearningManagementSystem.Infrastructrue.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+
+
+        // Configuration passed via constructor
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+    }
+}

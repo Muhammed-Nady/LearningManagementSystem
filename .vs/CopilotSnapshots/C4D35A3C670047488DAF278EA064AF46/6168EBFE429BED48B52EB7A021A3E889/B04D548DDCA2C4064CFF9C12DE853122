@@ -1,0 +1,10 @@
+﻿// file: LearningManagementSystem.Core/Models/Enums/CourseLevel.cs
+namespace LearningManagementSystem.Core.Models.Enums
+{
+    public enum CourseLevel
+    {
+        Beginner = 1,
+        Intermediate = 2,
+        Advanced = 3
+    }
+}

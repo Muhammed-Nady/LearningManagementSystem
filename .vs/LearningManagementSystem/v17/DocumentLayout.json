@@ -1,0 +1,935 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\learningmanagementsystem.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\learningmanagementsystem.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\controllers\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\controllers\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.api\\learningmanagementsystem.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{9D5C79D2-8A9A-4AF7-8A74-6174A8ADA997}|LearningManagementSystem.API\\LearningManagementSystem.API.csproj|solutionrelative:learningmanagementsystem.api\\learningmanagementsystem.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\enrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\enrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\iprogressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\iprogressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\ienrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\ienrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\icourseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\icourseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\common\\resultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\common\\resultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\auth\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\auth\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\user\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\user\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\course\\courseresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\course\\courseresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\course\\updatecoursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\course\\updatecoursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\course\\createcoursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\course\\createcoursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\migrations\\20260209034236_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\migrations\\20260209034236_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.infrastructrue\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE66D1F6-772F-4D4D-ABE6-BCBDA293259C}|LearningManagementSystem.Infrastructrue\\LearningManagementSystem.Infrastructrue.csproj|solutionrelative:learningmanagementsystem.infrastructrue\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\enums\\courselevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\enums\\courselevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\enums\\contenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\enums\\contenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\enums\\enrollmentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\enums\\enrollmentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\section.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\section.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\progress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\progress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.core\\models\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6983DF9-FE43-4AC3-83C0-7CAB31EA37A1}|LearningManagementSystem.Core\\LearningManagementSystem.Core.csproj|solutionrelative:learningmanagementsystem.core\\models\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}|LearningManagementSystem.MVC\\LearningManagementSystem.MVC.csproj|c:\\users\\gguo1\\onedrive\\desktop\\projects\\learningmanagementsystem\\learningmanagementsystem.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1D27B1BB-9FFD-4BD2-885E-C7BCFB1D702E}|LearningManagementSystem.MVC\\LearningManagementSystem.MVC.csproj|solutionrelative:learningmanagementsystem.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1156701595\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-676118087\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1527967311\\ErrorViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\440295101\\QuestionType.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1876280114\\WeatherForecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1845091211\\WeatherForecastController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LearningManagementSystem.API.csproj",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\LearningManagementSystem.API.csproj",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\LearningManagementSystem.API.csproj",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\LearningManagementSystem.API.csproj",
+              "RelativeToolTip": "LearningManagementSystem.API\\LearningManagementSystem.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-09T10:21:46.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:19:43.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Controllers\\ReviewsController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Controllers\\ReviewsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:19:31.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:19:16.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProgressController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\ProgressController.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Controllers\\ProgressController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\ProgressController.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Controllers\\ProgressController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:19:02.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Program.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Program.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Program.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Program.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:10:37.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EnrollmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\EnrollmentsController.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Controllers\\EnrollmentsController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\EnrollmentsController.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Controllers\\EnrollmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:18:48.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\Controllers\\CoursesController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "LearningManagementSystem.API\\Controllers\\CoursesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:18:32.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IUserService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:04:59.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LearningManagementSystem.API.http",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\LearningManagementSystem.API.http",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\LearningManagementSystem.API.http",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\LearningManagementSystem.API.http",
+              "RelativeToolTip": "LearningManagementSystem.API\\LearningManagementSystem.API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-02-09T09:59:59.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IReviewService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\IReviewService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IReviewService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\IReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:04:51.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\CategoryService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\CategoryService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\CategoryService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\CategoryService.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAUwDwAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:07:18.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\AuthService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\AuthService.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAHAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:05:20.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\appsettings.json",
+              "RelativeDocumentMoniker": "LearningManagementSystem.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.API\\appsettings.json",
+              "RelativeToolTip": "LearningManagementSystem.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-09T03:08:10.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EnrollmentService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\EnrollmentService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\EnrollmentService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\EnrollmentService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\EnrollmentService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwEsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:06:30.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\ReviewService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\ReviewService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\ReviewService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\ReviewService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAxwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:07:37.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IProgressService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IProgressService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\IProgressService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IProgressService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\IProgressService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:04:33.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProgressService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\ProgressService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\ProgressService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\ProgressService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\ProgressService.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAxwFsAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:07:04.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\UserService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\UserService.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAkwBAAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:07:52.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CourseService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\CourseService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Services\\CourseService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Services\\CourseService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Services\\CourseService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwMMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:05:48.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IEnrollmentService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IEnrollmentService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\IEnrollmentService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IEnrollmentService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\IEnrollmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:04:26.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ICourseService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\ICourseService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\ICourseService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\ICourseService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\ICourseService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA4wA4AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:04:15.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\IAuthService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:02:41.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\Services\\ICategoryService.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\Services\\ICategoryService.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\Services\\ICategoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:04:42.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\User.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:17:41.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Auth\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Auth\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Auth\\AuthResponseDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Auth\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ResultDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Common\\ResultDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Common\\ResultDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Common\\ResultDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Common\\ResultDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:44:16.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Repositories\\Repository.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:44:27.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:44:08.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "RegisterRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UserResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\User\\UserResponseDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\User\\UserResponseDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\User\\UserResponseDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\User\\UserResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "CourseResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Course\\CourseResponseDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Course\\CourseResponseDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Course\\CourseResponseDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Course\\CourseResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "UpdateCourseDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Course\\UpdateCourseDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Course\\UpdateCourseDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Course\\UpdateCourseDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Course\\UpdateCourseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "LoginRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CreateCourseDto.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Course\\CreateCourseDto.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\DTOs\\Course\\CreateCourseDto.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\DTOs\\Course\\CreateCourseDto.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\DTOs\\Course\\CreateCourseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T08:03:24.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwBcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:44:37.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1527967311\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1527967311\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1527967311\\ErrorViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1527967311\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:51:44.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-676118087\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-676118087\\Class1.cs",
+              "ToolTip": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-676118087\\Class1.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-676118087\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:51:44.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1156701595\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1156701595\\Class1.cs",
+              "ToolTip": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1156701595\\Class1.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1156701595\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:51:44.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "20260209034236_Initial.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Migrations\\20260209034236_Initial.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Migrations\\20260209034236_Initial.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Migrations\\20260209034236_Initial.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Migrations\\20260209034236_Initial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:42:36.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1876280114\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1876280114\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1876280114\\WeatherForecast.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1876280114\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:51:44.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "QuestionType.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\440295101\\QuestionType.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\440295101\\QuestionType.cs",
+              "ToolTip": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\440295101\\QuestionType.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\440295101\\QuestionType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:51:44.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1845091211\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1845091211\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\gguo1\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1845091211\\WeatherForecastController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1845091211\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:51:44.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "EnrollmentStatus.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\EnrollmentStatus.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Enums\\EnrollmentStatus.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\EnrollmentStatus.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Enums\\EnrollmentStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:19:04.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\UserRole.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Enums\\UserRole.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\UserRole.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Enums\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:57.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Review.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Review.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Review.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:47.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Enrollment.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Enrollment.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Enrollment.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Enrollment.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Enrollment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:28.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Section.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Section.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Section.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Section.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Section.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:09.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Infrastructrue\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Infrastructrue\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "LearningManagementSystem.Infrastructrue\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAuwH4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:04:14.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Progress.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Progress.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Progress.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Progress.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Progress.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:39.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Lesson.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Lesson.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Lesson.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:19.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Course.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Course.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Course.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:18:00.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Entities\\Category.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:17:50.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ContentType.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\ContentType.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Enums\\ContentType.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\ContentType.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Enums\\ContentType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:19:11.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "CourseLevel.cs",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\CourseLevel.cs",
+              "RelativeDocumentMoniker": "LearningManagementSystem.Core\\Models\\Enums\\CourseLevel.cs",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.Core\\Models\\Enums\\CourseLevel.cs",
+              "RelativeToolTip": "LearningManagementSystem.Core\\Models\\Enums\\CourseLevel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:19:18.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.MVC\\appsettings.json",
+              "RelativeDocumentMoniker": "LearningManagementSystem.MVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\gguo1\\OneDrive\\Desktop\\Projects\\LearningManagementSystem\\LearningManagementSystem.MVC\\appsettings.json",
+              "RelativeToolTip": "LearningManagementSystem.MVC\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-09T03:08:21.721Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
