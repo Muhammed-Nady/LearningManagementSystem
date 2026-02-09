@@ -1,5 +1,6 @@
-
+using LearningManagementSystem.Core.Interfaces;
 using LearningManagementSystem.Infrastructrue.Data;
+using LearningManagementSystem.Infrastructrue.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearningManagementSystem.API
@@ -12,8 +13,11 @@ namespace LearningManagementSystem.API
 
             // Add services to the container.
             builder.Services.AddDbContext<ApplicationDbContext>(
-                options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            // Repository Pattern & Unit of Work
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
