@@ -1,0 +1,200 @@
+@model LearningManagementSystem.MVC.Models.CourseResponseDto
+@{
+    ViewData["Title"] = "Manage Course Content";
+}
+
+<div class="container my-5">
+    <nav aria-label="breadcrumb">
+ <ol class="breadcrumb">
+     <li class="breadcrumb-item"><a asp-controller="Instructor" asp-action="Dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Instructor" asp-action="MyCourses">My Courses</a></li>
+<li class="breadcrumb-item active">@Model.Title</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+<h2 class="fw-bold">Manage Course Content</h2>
+         <p class="text-muted">@Model.Title</p>
+  </div>
+  <a asp-action="MyCourses" class="btn btn-outline-secondary">
+ <i class="bi bi-arrow-left me-2"></i>Back to My Courses
+        </a>
+    </div>
+
+  @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+   @TempData["Success"]
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+    }
+
+    <!-- Course Info Card -->
+    <div class="card border-0 shadow-sm mb-4">
+ <div class="card-body">
+     <div class="row align-items-center">
+     <div class="col-md-2">
+   @if (!string.IsNullOrEmpty(Model.ThumbnailUrl))
+  {
+        <img src="@Model.ThumbnailUrl" class="img-fluid rounded" alt="@Model.Title" />
+          }
+         else
+     {
+       <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 100px;">
+<i class="bi bi-book display-4 text-muted"></i>
+         </div>
+ }
+   </div>
+   <div class="col-md-10">
+     <h5 class="fw-bold">@Model.Title</h5>
+     <p class="text-muted mb-2">@Model.Description</p>
+         <div class="d-flex gap-3">
+   <span class="badge bg-secondary">@Model.Level</span>
+      <span class="badge bg-info text-dark">@Model.CategoryName</span>
+ @if (Model.IsPublished)
+      {
+      <span class="badge bg-success">Published</span>
+   }
+  else
+     {
+        <span class="badge bg-warning text-dark">Draft</span>
+         }
+          <span class="text-muted"><i class="bi bi-people me-1"></i>@Model.EnrollmentCount students</span>
+      </div>
+ </div>
+  </div>
+        </div>
+    </div>
+
+    <!-- Content Management Section -->
+    <div class="row g-4">
+     <!-- Sections & Lessons -->
+        <div class="col-lg-8">
+      <div class="card border-0 shadow-sm">
+ <div class="card-header bg-white border-0 py-3">
+      <div class="d-flex justify-content-between align-items-center">
+      <h5 class="fw-bold mb-0"><i class="bi bi-list-ul me-2"></i>Course Content</h5>
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addSectionModal">
+        <i class="bi bi-plus-circle me-1"></i>Add Section
+      </button>
+            </div>
+          </div>
+
+    <div class="card-body">
+         <div class="alert alert-info">
+          <i class="bi bi-info-circle me-2"></i>
+   <strong>Content Management Coming Soon!</strong>
+    <p class="mb-0 mt-2">The ability to add sections and lessons to your course is currently under development. Check back soon!</p>
+          </div>
+
+   <!-- Placeholder for sections and lessons -->
+<div class="text-center py-5">
+ <i class="bi bi-file-earmark-text display-1 text-muted mb-3"></i>
+<h5 class="text-muted">No content added yet</h5>
+       <p class="text-muted">Start building your course by adding sections and lessons</p>
+          </div>
+       </div>
+</div>
+        </div>
+
+        <!-- Actions Panel -->
+        <div class="col-lg-4">
+     <div class="card border-0 shadow-sm mb-3">
+      <div class="card-header bg-primary text-white py-3">
+  <h6 class="mb-0"><i class="bi bi-gear me-2"></i>Course Actions</h6>
+      </div>
+  <div class="card-body">
+<div class="d-grid gap-2">
+      <a asp-action="EditCourse" asp-route-id="@Model.CourseId" class="btn btn-outline-primary">
+       <i class="bi bi-pencil me-2"></i>Edit Course Details
+    </a>
+    
+   @if (Model.IsPublished)
+     {
+      <form asp-controller="Instructor" asp-action="TogglePublish" method="post">
+        <input type="hidden" name="id" value="@Model.CourseId" />
+    <input type="hidden" name="publish" value="false" />
+      <button type="submit" class="btn btn-outline-warning w-100">
+       <i class="bi bi-eye-slash me-2"></i>Unpublish Course
+ </button>
+  </form>
+   }
+  else
+       {
+ <form asp-controller="Instructor" asp-action="TogglePublish" method="post">
+        <input type="hidden" name="id" value="@Model.CourseId" />
+      <input type="hidden" name="publish" value="true" />
+       <button type="submit" class="btn btn-outline-success w-100">
+<i class="bi bi-eye me-2"></i>Publish Course
+  </button>
+     </form>
+  }
+
+    <form asp-controller="Instructor" asp-action="DeleteCourse" method="post" onsubmit="return confirm('Are you sure you want to delete this course? This action cannot be undone.');">
+  <input type="hidden" name="id" value="@Model.CourseId" />
+    <button type="submit" class="btn btn-outline-danger w-100">
+       <i class="bi bi-trash me-2"></i>Delete Course
+         </button>
+      </form>
+ </div>
+   </div>
+ </div>
+
+   <div class="card border-0 shadow-sm">
+ <div class="card-header bg-white border-0 py-3">
+      <h6 class="mb-0"><i class="bi bi-graph-up me-2"></i>Course Stats</h6>
+        </div>
+   <div class="card-body">
+      <ul class="list-group list-group-flush">
+     <li class="list-group-item d-flex justify-content-between px-0">
+<span>Enrolled Students</span>
+  <strong>@Model.EnrollmentCount</strong>
+        </li>
+   <li class="list-group-item d-flex justify-content-between px-0">
+ <span>Average Rating</span>
+    <strong>@Model.AverageRating.ToString("0.0")<i class="bi bi-star-fill text-warning ms-1"></i></strong>
+ </li>
+          <li class="list-group-item d-flex justify-content-between px-0">
+   <span>Duration</span>
+        <strong>@(Model.Duration.HasValue ? Model.Duration + " hours" : "Not set")</strong>
+         </li>
+         <li class="list-group-item d-flex justify-content-between px-0">
+    <span>Price</span>
+      <strong>@(Model.Price > 0 ? "$" + Model.Price : "Free")</strong>
+      </li>
+       </ul>
+       </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<!-- Add Section Modal (Placeholder) -->
+<div class="modal fade" id="addSectionModal" tabindex="-1">
+    <div class="modal-dialog">
+ <div class="modal-content">
+   <div class="modal-header">
+    <h5 class="modal-title">Add Section</h5>
+     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+     </div>
+    <div class="modal-body">
+   <div class="alert alert-warning">
+   This feature is coming soon!
+        </div>
+     <div class="mb-3">
+       <label class="form-label">Section Title</label>
+       <input type="text" class="form-control" placeholder="e.g., Introduction" disabled />
+</div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+      <textarea class="form-control" rows="3" disabled></textarea>
+   </div>
+         </div>
+    <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-primary" disabled>Save Section</button>
+  </div>
+        </div>
+    </div>
+</div>

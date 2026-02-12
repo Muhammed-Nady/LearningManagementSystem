@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +13,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
@@ -42,17 +44,33 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">
+                        <a class="nav-link" href="/home/about">
                             <i class="bi bi-info-circle me-1"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/contact">
+                            <i class="bi bi-envelope me-1"></i>Contact
                         </a>
                     </li>
                 </ul>
 
                 <!-- Right side auth / user menu -->
                 <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item d-none" id="navDashboard">
-                        <a class="nav-link" href="/dashboard">
+                    <!-- Role-specific dashboard links -->
+                    <li class="nav-item d-none" id="navStudentDashboard">
+                        <a class="nav-link" href="/student/dashboard">
                             <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item d-none" id="navInstructorDashboard">
+                        <a class="nav-link" href="/instructor/dashboard">
+                            <i class="bi bi-easel me-1"></i>Instructor
+                        </a>
+                    </li>
+                    <li class="nav-item d-none" id="navAdminDashboard">
+                        <a class="nav-link" href="/admin/dashboard">
+                            <i class="bi bi-shield-lock me-1"></i>Admin
                         </a>
                     </li>
 
@@ -70,14 +88,39 @@
 
                     <!-- Logged In -->
                     <li class="nav-item dropdown d-none ms-2" id="navUserMenu">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+                            data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle me-1"></i>
                             <span id="userName">User</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/profile"><i class="bi bi-person me-2"></i>Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            <!-- Student Links -->
+                            <li class="role-student"><a class="dropdown-item" href="/student/dashboard"><i
+                                        class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                            <li class="role-student"><a class="dropdown-item" href="/student/mycourses"><i
+                                        class="bi bi-book me-2"></i>My Courses</a></li>
+
+                            <!-- Instructor Links -->
+                            <li class="role-instructor"><a class="dropdown-item" href="/instructor/dashboard"><i
+                                        class="bi bi-easel me-2"></i>Instructor Dashboard</a></li>
+                            <li class="role-instructor"><a class="dropdown-item" href="/instructor/mycourses"><i
+                                        class="bi bi-journals me-2"></i>My Courses</a></li>
+                            <li class="role-instructor"><a class="dropdown-item" href="/instructor/createcourse"><i
+                                        class="bi bi-plus-circle me-2"></i>Create Course</a></li>
+
+                            <!-- Admin Links -->
+                            <li class="role-admin"><a class="dropdown-item" href="/admin/dashboard"><i
+                                        class="bi bi-shield-lock me-2"></i>Admin Dashboard</a></li>
+                            <li class="role-admin"><a class="dropdown-item" href="/admin/manageusers"><i
+                                        class="bi bi-people me-2"></i>Manage Users</a></li>
+                            <li class="role-admin"><a class="dropdown-item" href="/admin/managecategories"><i
+                                        class="bi bi-grid me-2"></i>Categories</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i
+                                        class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -107,8 +150,8 @@
                     <ul class="list-unstyled">
                         <li><a href="/" class="text-muted text-decoration-none small">Home</a></li>
                         <li><a href="/courses" class="text-muted text-decoration-none small">Browse Courses</a></li>
-                        <li><a href="/about" class="text-muted text-decoration-none small">About Us</a></li>
-                        <li><a href="/contact" class="text-muted text-decoration-none small">Contact</a></li>
+                        <li><a href="/home/about" class="text-muted text-decoration-none small">About Us</a></li>
+                        <li><a href="/home/contact" class="text-muted text-decoration-none small">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -123,7 +166,7 @@
             </div>
             <hr class="border-secondary my-3">
             <div class="text-center text-muted small">
-                &copy; 2026 LMS Platform. All rights reserved. | <a href="/privacy" class="text-muted">Privacy Policy</a>
+                &copy; 2026 LMS Platform. All rights reserved. | <a href="/home/privacy" class="text-muted">Privacy Policy</a>
             </div>
         </div>
     </footer>
@@ -134,4 +177,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

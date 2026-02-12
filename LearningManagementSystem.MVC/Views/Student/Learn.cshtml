@@ -1,0 +1,247 @@
+@model LearningManagementSystem.MVC.Models.LearnViewModel
+@{
+    ViewData["Title"] = Model.CourseTitle;
+    Layout = null; // Full-screen layout
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Learn</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body { margin: 0; overflow: hidden; }
+      .learn-container { display: flex; height: 100vh; }
+    .video-section { flex: 1; display: flex; flex-direction: column; background: #000; }
+        .sidebar { width: 380px; background: #f9fafb; border-left: 1px solid #e5e7eb; overflow-y: auto; }
+      .video-player { flex: 1; display: flex; align-items: center; justify-content: center; background: #000; }
+  .video-controls { background: #1f2937; color: white; padding: 20px; }
+   .section-item { border-bottom: 1px solid #e5e7eb; }
+        .lesson-item { padding: 12px 20px; cursor: pointer; border-left: 3px solid transparent; transition: all 0.2s; }
+        .lesson-item:hover { background: #f3f4f6; }
+    .lesson-item.active { background: #ede9fe; border-left-color: #667eea; }
+  .lesson-item.completed { background: #d1fae5; }
+  .lesson-item.completed .bi-check-circle { color: #10b981; }
+        .lesson-item.locked { opacity: 0.5; cursor: not-allowed; }
+        video { max-width: 100%; max-height: 100%; }
+        .progress-bar-thin { height: 4px; }
+        @@media (max-width: 768px) {
+   .learn-container { flex-direction: column; }
+      .sidebar { width: 100%; max-height: 40vh; }
+     }
+</style>
+</head>
+<body>
+    <div class="learn-container">
+ <!-- Video Section -->
+        <div class="video-section">
+  <!-- Top Bar -->
+    <div class="bg-dark text-white p-3 d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+        <a href="/student/mycourses" class="btn btn-sm btn-outline-light me-3">
+    <i class="bi bi-arrow-left"></i> Exit
+      </a>
+  <div>
+       <h6 class="mb-0 fw-bold">@Model.CourseTitle</h6>
+   <small class="text-muted">by @Model.InstructorName</small>
+   </div>
+             </div>
+      <div>
+      <span class="badge bg-success" id="progressBadge">0% Complete</span>
+           </div>
+       </div>
+
+          <!-- Video Player -->
+ <div class="video-player" id="videoPlayer">
+  <div class="text-center text-white">
+    <i class="bi bi-play-circle" style="font-size: 5rem; opacity: 0.5;"></i>
+   <p class="mt-3">Select a lesson to start learning</p>
+          </div>
+      </div>
+
+      <!-- Video Controls -->
+      <div class="video-controls" id="videoControls" style="display: none;">
+     <h5 class="mb-2" id="currentLessonTitle">Lesson Title</h5>
+    <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-outline-light btn-sm" id="prevBtn" onclick="navigateLesson('prev')">
+      <i class="bi bi-chevron-left"></i> Previous
+          </button>
+       <button class="btn btn-success" id="completeBtn" onclick="markComplete()">
+       <i class="bi bi-check-circle me-2"></i>Mark as Complete
+    </button>
+           <button class="btn btn-outline-light btn-sm" id="nextBtn" onclick="navigateLesson('next')">
+       Next <i class="bi bi-chevron-right"></i>
+         </button>
+  </div>
+   </div>
+</div>
+
+ <!-- Sidebar: Course Content -->
+   <div class="sidebar">
+        <div class="p-3 border-bottom">
+  <h6 class="fw-bold mb-2">Course Content</h6>
+     <div class="progress progress-bar-thin">
+           <div class="progress-bar" id="overallProgress" style="width: 0%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+      </div>
+      </div>
+
+        <div id="courseSections">
+   <!-- Dynamic sections/lessons -->
+  <div class="text-center py-5 text-muted">
+    <div class="spinner-border spinner-border-sm" role="status"></div>
+    <p class="mt-2 small">Loading content...</p>
+                </div>
+    </div>
+ </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+    <script>
+        const API_BASE = (typeof AUTH_CONFIG !== 'undefined' && AUTH_CONFIG.API_URL) ? AUTH_CONFIG.API_URL : 'https://localhost:7000/api';
+     const COURSE_ID = @Model.CourseId;
+
+        let sections = [];
+let currentLesson = null;
+      let progress = [];
+
+        document.addEventListener('DOMContentLoaded', async function() {
+        if (!requireAuth()) return;
+
+            await loadCourseContent();
+            await loadProgress();
+      });
+
+        async function loadCourseContent() {
+            try {
+    // TODO: Replace with actual API endpoint for sections/lessons
+    // For now, show placeholder
+   const sectionsContainer = document.getElementById('courseSections');
+     sectionsContainer.innerHTML = `
+        <div class="section-item">
+ <div class="p-3 bg-light">
+         <h6 class="mb-0 fw-semibold"><i class="bi bi-folder me-2"></i>Section 1: Introduction</h6>
+      </div>
+     <div class="lesson-item" onclick="playLesson(1)">
+      <div class="d-flex justify-content-between align-items-center">
+       <div>
+    <i class="bi bi-play-circle me-2"></i>
+   <span>Welcome to the Course</span>
+     </div>
+  <small class="text-muted">5 min</small>
+       </div>
+     </div>
+    <div class="lesson-item locked">
+        <div class="d-flex justify-content-between align-items-center">
+             <div>
+        <i class="bi bi-lock me-2"></i>
+       <span>Course Overview</span>
+    </div>
+    <small class="text-muted">10 min</small>
+    </div>
+   </div>
+      </div>
+  <div class="section-item">
+      <div class="p-3 bg-light">
+    <h6 class="mb-0 fw-semibold"><i class="bi bi-folder me-2"></i>Section 2: Getting Started</h6>
+    </div>
+ <div class="lesson-item locked">
+        <div class="d-flex justify-content-between align-items-center">
+   <div>
+     <i class="bi bi-lock me-2"></i>
+   <span>Setup Environment</span>
+   </div>
+     <small class="text-muted">15 min</small>
+     </div>
+    </div>
+      </div>
+  `;
+       } catch (error) {
+     console.error('Failed to load content', error);
+ }
+     }
+
+        async function loadProgress() {
+  const token = getToken();
+   try {
+      // TODO: Call progress API
+                updateProgressDisplay(25); // Placeholder
+} catch (error) {
+   console.error('Failed to load progress', error);
+            }
+    }
+
+   function playLesson(lessonId) {
+       currentLesson = lessonId;
+
+     // Update UI
+   document.querySelectorAll('.lesson-item').forEach(item => item.classList.remove('active'));
+ event.currentTarget.classList.add('active');
+
+       const videoPlayer = document.getElementById('videoPlayer');
+          const videoControls = document.getElementById('videoControls');
+
+    // TODO: Load actual video URL from API
+videoPlayer.innerHTML = `
+<video controls autoplay style="width: 100%; height: 100%;">
+  <source src="/videos/sample.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+        </video>
+ `;
+
+   videoControls.style.display = 'block';
+      document.getElementById('currentLessonTitle').textContent = 'Lesson ' + lessonId + ': Welcome to the Course';
+        }
+
+        async function markComplete() {
+       if (!currentLesson) return;
+
+        const token = getToken();
+     const btn = document.getElementById('completeBtn');
+         btn.disabled = true;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Saving...';
+
+     try {
+  const response = await fetch(`${API_BASE}/progress/complete/${currentLesson}`, {
+    method: 'POST',
+         headers: { 'Authorization': `Bearer ${token}` }
+         });
+
+       if (response.ok) {
+        // Mark lesson as completed in UI
+          event.currentTarget.closest('.lesson-item')?.classList.add('completed');
+  btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Completed!';
+        btn.classList.replace('btn-success', 'btn-outline-success');
+
+       // Update progress
+    await loadProgress();
+
+ // Auto-navigate to next lesson
+   setTimeout(() => navigateLesson('next'), 1500);
+  } else {
+      alert('Failed to save progress');
+    }
+      } catch (error) {
+       console.error(error);
+          alert('Unable to save progress');
+        } finally {
+  btn.disabled = false;
+    }
+        }
+
+        function navigateLesson(direction) {
+   // TODO: Implement actual navigation based on course structure
+   alert(`Navigate ${direction} - Coming soon!`);
+ }
+
+        function updateProgressDisplay(percentage) {
+    document.getElementById('overallProgress').style.width = percentage + '%';
+    document.getElementById('progressBadge').textContent = percentage + '% Complete';
+  }
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+@model List<LearningManagementSystem.MVC.Controllers.UserDto>
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold"><i class="bi bi-people me-2"></i>Manage Users</h2>
+  <a asp-action="Dashboard" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+ </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+   @TempData["Success"]
+   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+   </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+     @TempData["Error"]
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+}
+
+ <div class="card border-0 shadow-sm">
+ <div class="card-header bg-white border-0 py-3">
+  <div class="d-flex justify-content-between align-items-center">
+       <h5 class="fw-bold mb-0">All Users (@Model.Count)</h5>
+    <div class="input-group" style="max-width: 300px;">
+   <span class="input-group-text"><i class="bi bi-search"></i></span>
+ <input type="text" id="searchInput" class="form-control" placeholder="Search users..." />
+      </div>
+  </div>
+ </div>
+
+        <div class="card-body p-0">
+            @if (Model.Any())
+      {
+      <div class="table-responsive">
+    <table class="table table-hover mb-0" id="usersTable">
+            <thead class="table-light">
+   <tr>
+       <th>ID</th>
+  <th>Name</th>
+           <th>Email</th>
+       <th>Role</th>
+        <th>Status</th>
+     <th>Created</th>
+         <th>Actions</th>
+      </tr>
+    </thead>
+         <tbody>
+    @foreach (var user in Model.OrderByDescending(u => u.CreatedAt))
+       {
+      <tr>
+      <td class="align-middle">@user.UserId</td>
+ <td class="align-middle">
+   <div class="d-flex align-items-center">
+    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+       <span class="fw-bold">@user.FirstName.FirstOrDefault()@user.LastName.FirstOrDefault()</span>
+  </div>
+    <div>
+     <div class="fw-semibold">@user.FirstName @user.LastName</div>
+          </div>
+    </div>
+       </td>
+<td class="align-middle">@user.Email</td>
+       <td class="align-middle">
+  @if (user.Role == "Admin")
+       {
+     <span class="badge bg-danger">@user.Role</span>
+  }
+else if (user.Role == "Instructor")
+           {
+     <span class="badge bg-primary">@user.Role</span>
+        }
+   else
+       {
+   <span class="badge bg-secondary">@user.Role</span>
+       }
+       </td>
+        <td class="align-middle">
+    @if (user.IsActive)
+    {
+  <span class="badge bg-success">Active</span>
+     }
+       else
+    {
+              <span class="badge bg-warning">Inactive</span>
+      }
+ </td>
+   <td class="align-middle">
+      <small class="text-muted">@user.CreatedAt.ToString("MMM dd, yyyy")</small>
+          </td>
+   <td class="align-middle">
+ @if (user.Role != "Admin")
+  {
+         @if (user.IsActive)
+    {
+    <form asp-action="DeactivateUser" method="post" class="d-inline" onsubmit="return confirm('Deactivate this user?');">
+     <input type="hidden" name="id" value="@user.UserId" />
+        <button type="submit" class="btn btn-sm btn-outline-warning">
+   <i class="bi bi-x-circle me-1"></i>Deactivate
+   </button>
+</form>
+      }
+     else
+            {
+          <form asp-action="ActivateUser" method="post" class="d-inline">
+       <input type="hidden" name="id" value="@user.UserId" />
+<button type="submit" class="btn btn-sm btn-outline-success">
+        <i class="bi bi-check-circle me-1"></i>Activate
+       </button>
+     </form>
+             }
+     }
+  else
+     {
+      <span class="text-muted">-</span>
+      }
+         </td>
+       </tr>
+  }
+       </tbody>
+  </table>
+       </div>
+            }
+            else
+         {
+       <div class="text-center py-5">
+      <i class="bi bi-people display-1 text-muted mb-3"></i>
+   <p class="text-muted">No users found</p>
+ </div>
+     }
+    </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Simple search functionality
+   document.getElementById('searchInput').addEventListener('keyup', function() {
+   const searchValue = this.value.toLowerCase();
+     const table = document.getElementById('usersTable');
+      const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) {
+     const row = rows[i];
+           const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchValue) ? '' : 'none';
+            }
+        });
+
+        // Require admin role
+ document.addEventListener('DOMContentLoaded', function() {
+   if (!requireRole('Admin')) {
+      window.location.href = '/';
+      }
+     });
+    </script>
+}

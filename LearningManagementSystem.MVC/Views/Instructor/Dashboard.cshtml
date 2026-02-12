@@ -1,0 +1,195 @@
+@model LearningManagementSystem.MVC.Models.InstructorDashboardViewModel
+@{
+    ViewData["Title"] = "Instructor Dashboard";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+   <h2 class="fw-bold">Instructor Dashboard</h2>
+        <a asp-action="CreateCourse" class="btn btn-primary">
+      <i class="bi bi-plus-circle me-2"></i>Create New Course
+ </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          @TempData["Success"]
+   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+   </div>
+    }
+
+    <!-- Statistics Cards -->
+    <div class="row g-4 mb-5">
+  <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+    <div class="card-body text-center">
+ <div class="display-4 text-primary mb-2">
+          <i class="bi bi-book"></i>
+               </div>
+ <h3 class="fw-bold mb-1">@Model.TotalCourses</h3>
+           <p class="text-muted mb-0">Total Courses</p>
+           </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+       <div class="display-4 text-success mb-2">
+            <i class="bi bi-check-circle"></i>
+        </div>
+     <h3 class="fw-bold mb-1">@Model.PublishedCourses</h3>
+              <p class="text-muted mb-0">Published</p>
+    </div>
+       </div>
+        </div>
+
+        <div class="col-md-3">
+         <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+ <div class="display-4 text-info mb-2">
+        <i class="bi bi-people"></i>
+      </div>
+         <h3 class="fw-bold mb-1">@Model.TotalStudents</h3>
+   <p class="text-muted mb-0">Total Students</p>
+         </div>
+   </div>
+      </div>
+
+        <div class="col-md-3">
+      <div class="card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+          <div class="display-4 text-warning mb-2">
+       <i class="bi bi-star-fill"></i>
+      </div>
+     <h3 class="fw-bold mb-1">@Model.AverageRating.ToString("0.0")</h3>
+           <p class="text-muted mb-0">Average Rating</p>
+      </div>
+            </div>
+        </div>
+  </div>
+
+    <!-- Recent Courses -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 py-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <h5 class="fw-bold mb-0">My Courses</h5>
+  <a asp-action="MyCourses" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+        </div>
+   <div class="card-body">
+  @if (Model.Courses.Any())
+            {
+           <div class="table-responsive">
+ <table class="table table-hover">
+           <thead>
+         <tr>
+           <th>Course</th>
+      <th>Status</th>
+        <th>Students</th>
+          <th>Rating</th>
+        <th>Price</th>
+          <th>Actions</th>
+            </tr>
+        </thead>
+     <tbody>
+     @foreach (var course in Model.Courses.Take(5))
+         {
+      <tr>
+  <td>
+    <div class="d-flex align-items-center">
+            @if (!string.IsNullOrEmpty(course.ThumbnailUrl))
+  {
+   <img src="@course.ThumbnailUrl" alt="@course.Title" class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;" />
+        }
+        else
+     {
+          <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+    <i class="bi bi-book text-muted"></i>
+     </div>
+      }
+         <div>
+            <div class="fw-semibold">@course.Title</div>
+            <div class="small text-muted">@course.Level</div>
+         </div>
+          </div>
+         </td>
+  <td>
+          @if (course.IsPublished)
+                 {
+     <span class="badge bg-success">Published</span>
+            }
+      else
+    {
+ <span class="badge bg-secondary">Draft</span>
+}
+     </td>
+  <td>
+       <i class="bi bi-people me-1"></i>@course.EnrollmentCount
+          </td>
+     <td>
+              @if (course.AverageRating > 0)
+         {
+           <span class="text-warning">
+       <i class="bi bi-star-fill"></i>
+       @course.AverageRating.ToString("0.0")
+       </span>
+           }
+         else
+    {
+   <span class="text-muted">No ratings</span>
+   }
+           </td>
+              <td class="fw-semibold">
+  @(course.Price > 0 ? "$" + course.Price : "Free")
+         </td>
+              <td>
+      <div class="btn-group btn-group-sm">
+         <a asp-action="EditCourse" asp-route-id="@course.CourseId" class="btn btn-outline-primary" title="Edit">
+          <i class="bi bi-pencil"></i>
+ </a>
+             <a asp-action="ManageContent" asp-route-id="@course.CourseId" class="btn btn-outline-info" title="Manage Content">
+      <i class="bi bi-file-earmark-text"></i>
+           </a>
+ </div>
+    </td>
+         </tr>
+    }
+          </tbody>
+         </table>
+        </div>
+        }
+     else
+    {
+           <div class="text-center py-5">
+             <i class="bi bi-book display-1 text-muted mb-3"></i>
+    <h5 class="text-muted">No courses yet</h5>
+          <p class="text-muted">Create your first course to get started!</p>
+   <a asp-action="CreateCourse" class="btn btn-primary mt-3">
+            <i class="bi bi-plus-circle me-2"></i>Create Course
+        </a>
+         </div>
+        }
+   </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+      // Require instructor role
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!requireRole('Instructor') && !requireRole('Admin')) {
+  window.location.href = '/';
+      }
+     });
+    </script>
+}

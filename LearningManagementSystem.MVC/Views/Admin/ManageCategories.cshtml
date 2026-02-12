@@ -1,0 +1,116 @@
+@model List<LearningManagementSystem.MVC.Models.CategoryDto>
+@{
+    ViewData["Title"] = "Manage Categories";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold"><i class="bi bi-grid me-2"></i>Manage Categories</h2>
+ <a asp-action="Dashboard" class="btn btn-outline-secondary">
+  <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+     @TempData["Success"]
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+ </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    @TempData["Error"]
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+    }
+
+    <div class="row">
+   <!-- Create Category Form -->
+ <div class="col-lg-4 mb-4">
+      <div class="card border-0 shadow-sm">
+       <div class="card-header bg-primary text-white py-3">
+      <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i>Create Category</h5>
+   </div>
+     <div class="card-body">
+           <form asp-action="CreateCategory" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label fw-semibold">Category Name</label>
+    <input type="text" id="name" name="name" class="form-control" placeholder="e.g., Web Development" required />
+        </div>
+
+        <div class="mb-3">
+        <label for="description" class="form-label fw-semibold">Description</label>
+      <textarea id="description" name="description" class="form-control" rows="3" placeholder="Optional description"></textarea>
+       </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-check-circle me-2"></i>Create Category
+     </button>
+      </form>
+   </div>
+     </div>
+      </div>
+
+        <!-- Categories List -->
+ <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+  <div class="card-header bg-white border-0 py-3">
+       <h5 class="fw-bold mb-0">All Categories (@Model.Count)</h5>
+     </div>
+
+    <div class="card-body p-0">
+   @if (Model.Any())
+        {
+   <div class="list-group list-group-flush">
+    @foreach (var category in Model.OrderBy(c => c.Name))
+  {
+     <div class="list-group-item">
+      <div class="d-flex justify-content-between align-items-start">
+             <div class="flex-grow-1">
+     <h6 class="fw-bold mb-1">@category.Name</h6>
+     @if (!string.IsNullOrEmpty(category.Description))
+       {
+    <p class="text-muted mb-2 small">@category.Description</p>
+}
+  <small class="text-muted">
+<i class="bi bi-calendar me-1"></i>Created: @category.CreatedAt.ToString("MMM dd, yyyy")
+   </small>
+         </div>
+
+       <form asp-action="DeleteCategory" method="post" class="ms-3" onsubmit="return confirm('Delete this category? This action cannot be undone.');">
+    <input type="hidden" name="id" value="@category.CategoryId" />
+        <button type="submit" class="btn btn-sm btn-outline-danger">
+     <i class="bi bi-trash"></i>
+    </button>
+  </form>
+       </div>
+         </div>
+       }
+ </div>
+   }
+      else
+      {
+        <div class="text-center py-5">
+      <i class="bi bi-grid display-1 text-muted mb-3"></i>
+       <p class="text-muted">No categories yet. Create one to get started!</p>
+     </div>
+    }
+    </div>
+   </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+     // Require admin role
+  document.addEventListener('DOMContentLoaded', function() {
+  if (!requireRole('Admin')) {
+     window.location.href = '/';
+   }
+   });
+    </script>
+}

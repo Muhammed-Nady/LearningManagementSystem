@@ -2,7 +2,7 @@
 // Manages JWT tokens and user authentication state
 
 const AUTH_CONFIG = {
-    API_URL: 'https://localhost:7000/api',
+    API_URL: 'https://localhost:7059/api',
     TOKEN_KEY: 'lms_auth_token',
     USER_KEY: 'lms_user_data'
 };
@@ -55,27 +55,55 @@ function logout() {
 function updateNavigation() {
     const isAuth = isAuthenticated();
     const user = getUser();
+    const userRole = getUserRole();
 
     // Elements
     const navLogin = document.getElementById('navLogin');
     const navRegister = document.getElementById('navRegister');
-    const navDashboard = document.getElementById('navDashboard');
     const navUserMenu = document.getElementById('navUserMenu');
     const userName = document.getElementById('userName');
+    
+    // Role-specific dashboards
+    const navStudentDashboard = document.getElementById('navStudentDashboard');
+    const navInstructorDashboard = document.getElementById('navInstructorDashboard');
+    const navAdminDashboard = document.getElementById('navAdminDashboard');
 
-    if (isAuth && user) {
+  if (isAuth && user) {
         // Show authenticated elements
         if (navLogin) navLogin.classList.add('d-none');
         if (navRegister) navRegister.classList.add('d-none');
-        if (navDashboard) navDashboard.classList.remove('d-none');
         if (navUserMenu) navUserMenu.classList.remove('d-none');
         if (userName) userName.textContent = user.firstName || 'User';
+
+        // Show/hide role-specific dashboard links
+        if (navStudentDashboard) {
+    userRole === 'Student' ? navStudentDashboard.classList.remove('d-none') : navStudentDashboard.classList.add('d-none');
+        }
+        if (navInstructorDashboard) {
+  userRole === 'Instructor' ? navInstructorDashboard.classList.remove('d-none') : navInstructorDashboard.classList.add('d-none');
+        }
+  if (navAdminDashboard) {
+            userRole === 'Admin' ? navAdminDashboard.classList.remove('d-none') : navAdminDashboard.classList.add('d-none');
+        }
+
+        // Show/hide dropdown menu items based on role
+  document.querySelectorAll('.role-student').forEach(el => {
+         userRole === 'Student' ? el.classList.remove('d-none') : el.classList.add('d-none');
+     });
+ document.querySelectorAll('.role-instructor').forEach(el => {
+   userRole === 'Instructor' ? el.classList.remove('d-none') : el.classList.add('d-none');
+        });
+        document.querySelectorAll('.role-admin').forEach(el => {
+ userRole === 'Admin' ? el.classList.remove('d-none') : el.classList.add('d-none');
+});
     } else {
         // Show non-authenticated elements
         if (navLogin) navLogin.classList.remove('d-none');
         if (navRegister) navRegister.classList.remove('d-none');
-        if (navDashboard) navDashboard.classList.add('d-none');
         if (navUserMenu) navUserMenu.classList.add('d-none');
+        if (navStudentDashboard) navStudentDashboard.classList.add('d-none');
+        if (navInstructorDashboard) navInstructorDashboard.classList.add('d-none');
+        if (navAdminDashboard) navAdminDashboard.classList.add('d-none');
     }
 }
 
@@ -88,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function requireAuth() {
     if (!isAuthenticated()) {
         window.location.href = '/account/login?returnUrl=' + encodeURIComponent(window.location.pathname);
-        return false;
+    return false;
     }
     return true;
 }
@@ -100,8 +128,8 @@ function requireRole(requiredRole) {
     const userRole = getUserRole();
     if (userRole !== requiredRole) {
         alert('Access denied. You do not have permission to access this page.');
-        window.location.href = '/';
-        return false;
+     window.location.href = '/';
+    return false;
     }
     return true;
 }
@@ -119,7 +147,7 @@ function isTokenExpired() {
 async function refreshTokenIfNeeded() {
     if (isAuthenticated() && isTokenExpired()) {
         console.log('Token expired, please login again');
-        clearAuth();
+      clearAuth();
         window.location.href = '/account/login';
     }
 }

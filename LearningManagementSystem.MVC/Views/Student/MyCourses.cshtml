@@ -1,0 +1,167 @@
+@model LearningManagementSystem.MVC.Models.MyCoursesViewModel
+@{
+    ViewData["Title"] = "My Courses";
+}
+
+<div class="container my-5">
+    <h1 class="fw-bold mb-4">My Courses</h1>
+
+    <!-- Filter Tabs -->
+ <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+ <a class="nav-link active" href="#" data-filter="All" onclick="filterCourses('All', event)">All</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-filter="InProgress" onclick="filterCourses('InProgress', event)">In Progress</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#" data-filter="Completed" onclick="filterCourses('Completed', event)">Completed</a>
+        </li>
+    </ul>
+
+    <!-- Courses List -->
+    <div id="coursesList" class="row g-3">
+     <!-- Dynamic content -->
+        <div class="col-12 text-center text-muted py-5">
+            <div class="spinner-border" role="status">
+         <span class="visually-hidden">Loading...</span>
+   </div>
+   <p class="mt-3">Loading your courses...</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+ const API_BASE = (typeof AUTH_CONFIG !== 'undefined' && AUTH_CONFIG.API_URL) ? AUTH_CONFIG.API_URL : 'https://localhost:7000/api';
+        let allEnrollments = [];
+        let currentFilter = 'All';
+
+document.addEventListener('DOMContentLoaded', async function() {
+            if (!requireAuth()) return;
+
+ await loadMyCourses();
+        });
+
+  async function loadMyCourses() {
+  const token = getToken();
+
+   try {
+  const response = await fetch(`${API_BASE}/enrollments/my-enrollments`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+         });
+
+       if (response.ok) {
+         const result = await response.json();
+    allEnrollments = result.data || [];
+displayCourses(allEnrollments);
+    } else {
+    showError('Failed to load courses');
+     }
+      } catch (error) {
+    console.error(error);
+     showError('Unable to connect to server');
+ }
+        }
+
+        function displayCourses(enrollments) {
+       const container = document.getElementById('coursesList');
+
+      if (enrollments.length === 0) {
+     container.innerHTML = `
+   <div class="col-12 text-center text-muted py-5">
+          <i class="bi bi-inbox" style="font-size:4rem;"></i>
+ <h4 class="mt-3">No courses found</h4>
+    <p>Start learning by <a href="/courses">browsing courses</a></p>
+        </div>
+      `;
+    return;
+  }
+
+            container.innerHTML = '';
+
+   enrollments.forEach(enrollment => {
+    const col = document.createElement('div');
+  col.className = 'col-md-6 col-lg-4';
+          
+    const statusBadge = enrollment.status === 'Completed' 
+    ? '<span class="badge bg-success">Completed</span>'
+    : enrollment.progressPercentage > 0
+     ? '<span class="badge bg-primary">In Progress</span>'
+       : '<span class="badge bg-secondary">Not Started</span>';
+
+      col.innerHTML = `
+         <div class="card h-100 border-0 shadow-sm">
+               <img src="${enrollment.course?.thumbnailUrl || '/images/course-placeholder.png'}" 
+         class="card-img-top" style="height:180px;object-fit:cover;" alt="${enrollment.course?.title}" />
+         <div class="card-body d-flex flex-column">
+     <div class="d-flex justify-content-between align-items-start mb-2">
+      <h5 class="card-title mb-0">${enrollment.course?.title || 'Course'}</h5>
+   ${statusBadge}
+          </div>
+              <p class="text-muted small mb-3"><i class="bi bi-person"></i> ${enrollment.course?.instructorName || ''}</p>
+          
+       <div class="mb-3">
+       <div class="d-flex justify-content-between small mb-1">
+   <span>Progress</span>
+            <span class="fw-semibold">${enrollment.progressPercentage.toFixed(0)}%</span>
+      </div>
+                <div class="progress" style="height:8px;">
+         <div class="progress-bar" style="width:${enrollment.progressPercentage}%;background:linear-gradient(90deg,#10B981,#059669);"></div>
+ </div>
+               </div>
+
+       <div class="mt-auto">
+     ${enrollment.status === 'Completed' 
+         ? `<a href="/student/learn/${enrollment.courseId}" class="btn btn-outline-primary w-100 mb-2">Review Course</a>
+   <button class="btn btn-success w-100" onclick="downloadCertificate(${enrollment.courseId})">
+   <i class="bi bi-download me-2"></i>Certificate
+       </button>`
+      : `<a href="/student/learn/${enrollment.courseId}" class="btn btn-primary w-100">
+           ${enrollment.progressPercentage > 0 ? 'Continue Learning' : 'Start Learning'}
+  </a>`
+           }
+            </div>
+     </div>
+   </div>
+  `;
+                container.appendChild(col);
+            });
+        }
+
+        function filterCourses(filter, event) {
+ event?.preventDefault();
+       currentFilter = filter;
+
+         // Update active tab
+    document.querySelectorAll('.nav-link').forEach(link => {
+           link.classList.remove('active');
+        });
+         event?.target.classList.add('active');
+
+            // Filter enrollments
+            let filtered = allEnrollments;
+   if (filter === 'InProgress') {
+       filtered = allEnrollments.filter(e => e.status === 'Active' && e.progressPercentage < 100);
+            } else if (filter === 'Completed') {
+       filtered = allEnrollments.filter(e => e.status === 'Completed');
+            }
+
+            displayCourses(filtered);
+        }
+
+        function downloadCertificate(courseId) {
+    alert('Certificate download feature coming soon!');
+     // TODO: Implement certificate generation
+        }
+
+    function showError(message) {
+  const container = document.getElementById('coursesList');
+          container.innerHTML = `
+    <div class="col-12">
+<div class="alert alert-danger">${message}</div>
+          </div>
+            `;
+        }
+    </script>
+}

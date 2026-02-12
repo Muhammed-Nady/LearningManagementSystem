@@ -1,0 +1,102 @@
+@model LearningManagementSystem.MVC.Models.CreateCourseViewModel
+@{
+    ViewData["Title"] = "Create Course";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+ <div class="col-lg-8">
+          <div class="card border-0 shadow-sm">
+  <div class="card-header bg-primary text-white py-3">
+   <h4 class="mb-0"><i class="bi bi-plus-circle me-2"></i>Create New Course</h4>
+      </div>
+
+      <div class="card-body p-4">
+            <form asp-action="CreateCourse" method="post">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+  <div class="mb-3">
+        <label asp-for="Title" class="form-label fw-semibold"></label>
+    <input asp-for="Title" class="form-control" placeholder="Enter course title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+     <div class="mb-3">
+    <label asp-for="Description" class="form-label fw-semibold"></label>
+          <textarea asp-for="Description" class="form-control" rows="5" placeholder="Describe what students will learn"></textarea>
+<span asp-validation-for="Description" class="text-danger"></span>
+  </div>
+
+             <div class="row">
+      <div class="col-md-6 mb-3">
+         <label asp-for="CategoryId" class="form-label fw-semibold"></label>
+    <select asp-for="CategoryId" class="form-select">
+        <option value="">-- Select Category --</option>
+    @if (ViewBag.Categories != null)
+                {
+     foreach (var category in ViewBag.Categories)
+              {
+<option value="@category.CategoryId">@category.Name</option>
+  }
+     }
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+     </div>
+
+       <div class="col-md-6 mb-3">
+     <label asp-for="Level" class="form-label fw-semibold"></label>
+      <select asp-for="Level" class="form-select">
+        <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+         <option value="Advanced">Advanced</option>
+       </select>
+    <span asp-validation-for="Level" class="text-danger"></span>
+              </div>
+       </div>
+
+<div class="row">
+              <div class="col-md-6 mb-3">
+                <label asp-for="Duration" class="form-label fw-semibold"></label>
+     <div class="input-group">
+          <input asp-for="Duration" type="number" class="form-control" placeholder="0" />
+         <span class="input-group-text">hours</span>
+   </div>
+       <span asp-validation-for="Duration" class="text-danger"></span>
+ </div>
+
+     <div class="col-md-6 mb-3">
+        <label asp-for="Price" class="form-label fw-semibold"></label>
+        <div class="input-group">
+        <span class="input-group-text">$</span>
+ <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="0.00" />
+    </div>
+      <span asp-validation-for="Price" class="text-danger"></span>
+         <div class="form-text">Set to 0 for a free course</div>
+       </div>
+         </div>
+
+      <div class="mb-3">
+          <label asp-for="ThumbnailUrl" class="form-label fw-semibold"></label>
+              <input asp-for="ThumbnailUrl" class="form-control" placeholder="https://example.com/image.jpg" />
+   <span asp-validation-for="ThumbnailUrl" class="text-danger"></span>
+       <div class="form-text">Enter the URL of your course thumbnail image</div>
+   </div>
+
+        <div class="d-flex gap-2 mt-4">
+     <button type="submit" class="btn btn-primary px-4">
+    <i class="bi bi-check-circle me-2"></i>Create Course
+               </button>
+   <a asp-action="MyCourses" class="btn btn-outline-secondary px-4">
+     <i class="bi bi-x-circle me-2"></i>Cancel
+       </a>
+          </div>
+      </form>
+   </div>
+            </div>
+    </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
