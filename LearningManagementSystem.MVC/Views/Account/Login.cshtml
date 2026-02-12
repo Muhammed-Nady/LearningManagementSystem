@@ -1,0 +1,109 @@
+﻿@model LearningManagementSystem.MVC.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <div class="mb-3">
+                            <i class="bi bi-shield-lock-fill" style="font-size: 3rem; color: #667eea;"></i>
+                        </div>
+                        <h2 class="fw-bold" style="color: #1F2937;">Welcome Back</h2>
+                        <p class="text-muted">Sign in to continue your learning journey</p>
+                    </div>
+
+                    <div id="errorMessage" class="alert alert-danger d-none" role="alert" style="background-color: #FEE2E2; border: 1px solid #F87171; color: #991B1B; border-radius: 8px;"></div>
+
+                    <form id="loginForm" novalidate>
+                        <div class="mb-4">
+                            <label asp-for="Email" class="form-label" style="color: #374151; font-weight: 600;"></label>
+                            <input asp-for="Email" class="form-control form-control-lg" placeholder="Enter your email" style="border: 2px solid #E5E7EB; border-radius: 10px;" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Password" class="form-label" style="color: #374151; font-weight: 600;"></label>
+                            <input asp-for="Password" class="form-control form-control-lg" placeholder="Enter your password" style="border: 2px solid #E5E7EB; border-radius: 10px;" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="ReturnUrl" />
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3" id="loginBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 10px; padding: 12px; font-weight: 600;">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                        </button>
+
+                        <div class="text-center mt-4">
+                            <p class="text-muted mb-2">Don't have an account?</p>
+                            <a asp-controller="Account" asp-action="Register" class="text-decoration-none fw-semibold" style="color: #667eea;">Create new account →</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+            const API_BASE = (typeof AUTH_CONFIG !== 'undefined' && AUTH_CONFIG.API_URL) ? AUTH_CONFIG.API_URL : 'https://localhost:7000/api';
+
+                document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                  e.preventDefault();
+
+                    const btn = document.getElementById('loginBtn');
+                 const errorDiv = document.getElementById('errorMessage');
+
+           // Clear previous errors
+          errorDiv.classList.add('d-none');
+
+        // Get form data
+                const email = document.getElementById('Email').value;
+        const password = document.getElementById('Password').value;
+        const returnUrl = document.getElementById('ReturnUrl').value || '/';
+
+          // Disable button
+               btn.disabled = true;
+          btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Signing in...';
+
+              try {
+            const response = await fetch(`${API_BASE}/auth/login`, {
+         method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email, password })
+             });
+
+        const result = await response.json();
+
+               if (response.ok && result.success) {
+               // Save auth data using auth.js
+                   saveAuth(result.data.token, {
+                userId: result.data.userId,
+           email: result.data.email,
+        firstName: result.data.firstName,
+          lastName: result.data.lastName,
+               role: result.data.role,
+        expiresAt: result.data.expiresAt
+               });
+
+                     // Redirect
+         window.location.href = returnUrl;
+         } else {
+                 errorDiv.textContent = result.message || 'Invalid email or password';
+          errorDiv.classList.remove('d-none');
+                }
+        } catch (error) {
+                errorDiv.textContent = 'Unable to connect to server. Please try again.';
+                 errorDiv.classList.remove('d-none');
+             } finally {
+                btn.disabled = false;
+                  btn.innerHTML = '<i class="bi bi-box-arrow-in-right me-2"></i>Sign In';
+          }
+                });
+    </script>
+}

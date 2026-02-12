@@ -1,8 +1,54 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="bg-light py-5">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold">Learn Anything, Anytime</h1>
+        <p class="lead text-muted mb-4">High-quality courses from expert instructors. Start learning today.</p>
+        <div class="d-flex justify-content-center gap-2">
+            <a class="btn btn-primary btn-lg" asp-controller="Courses" asp-action="Index">Browse Courses</a>
+            <a class="btn btn-outline-primary btn-lg" asp-controller="Account" asp-action="Register">Get Started</a>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4">Featured Courses</h2>
+        <a asp-controller="Courses" asp-action="Index" class="small">View all courses &rarr;</a>
+    </div>
+
+    <div class="row g-3">
+        @if (Model?.FeaturedCourses?.Any() ?? false)
+        {
+            foreach (var course in Model.FeaturedCourses.Take(6))
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <partial name="_CourseCard" model="course" />
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-muted">No courses available yet.</div>
+        }
+    </div>
+
+    <div class="mt-5">
+        <h3 class="h5 mb-3">Browse by Category</h3>
+        <div class="d-flex flex-wrap gap-2">
+            @if (Model?.Categories?.Any() ?? false)
+            {
+                foreach (var cat in Model.Categories)
+                {
+                    <a class="badge bg-secondary text-decoration-none text-white py-2 px-3" asp-controller="Courses" asp-action="Index" asp-route-category="@cat.CategoryId">@cat.Name</a>
+                }
+            }
+            else
+            {
+                <div class="text-muted">No categories yet.</div>
+            }
+        </div>
+    </div>
 </div>

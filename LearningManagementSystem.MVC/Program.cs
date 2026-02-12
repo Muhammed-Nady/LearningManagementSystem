@@ -9,6 +9,14 @@ namespace LearningManagementSystem.MVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // Register HttpClient for API calls
+            var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7000/api";
+            builder.Services.AddHttpClient("ApiClient", client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
