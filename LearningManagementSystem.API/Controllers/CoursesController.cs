@@ -23,7 +23,8 @@ namespace LearningManagementSystem.API.Controllers
         /// </summary>
         [HttpGet]
         [AllowAnonymous]
-        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "*" })]
+        // TODO: Re-enable caching in production with cache invalidation strategy
+        // [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "*" })]
         public async Task<IActionResult> GetAllPublishedCourses()
         {
             var result = await _courseService.GetAllPublishedCoursesAsync();
@@ -35,7 +36,8 @@ namespace LearningManagementSystem.API.Controllers
         /// </summary>
         [HttpGet("{id}")]
         [AllowAnonymous]
-        [ResponseCache(Duration = 600, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "id" })]
+        // TODO: Re-enable caching in production
+        // [ResponseCache(Duration = 600, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "id" })]
         public async Task<IActionResult> GetCourseById(int id)
         {
             var result = await _courseService.GetCourseByIdAsync(id);
@@ -62,7 +64,8 @@ namespace LearningManagementSystem.API.Controllers
         /// Get courses by instructor ID
         /// </summary>
         [HttpGet("instructor/{instructorId}")]
-        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "instructorId" })]
+        // TODO: Re-enable caching in production
+        // [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "instructorId" })]
         public async Task<IActionResult> GetCoursesByInstructor(int instructorId)
         {
             var result = await _courseService.GetCoursesByInstructorAsync(instructorId);
@@ -74,7 +77,8 @@ namespace LearningManagementSystem.API.Controllers
         /// </summary>
         [HttpGet("category/{categoryId}")]
         [AllowAnonymous]
-        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "categoryId" })]
+        // TODO: Re-enable caching in production
+        // [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "categoryId" })]
         public async Task<IActionResult> GetCoursesByCategory(int categoryId)
         {
             var result = await _courseService.GetCoursesByCategoryAsync(categoryId);

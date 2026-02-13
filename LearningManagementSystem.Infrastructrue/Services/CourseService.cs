@@ -267,10 +267,11 @@ CategoryName = course.Category?.Name ?? "Uncategorized",
             if (course.InstructorId != instructorId)
                 return ResultDto<bool>.FailureResult("Unauthorized");
 
+            // TODO: Re-enable this check once section/lesson management is implemented
             // Check if course has content
-            var sections = await _unitOfWork.Sections.FindAsync(s => s.CourseId == courseId);
-            if (!sections.Any())
-                return ResultDto<bool>.FailureResult("Cannot publish course without content");
+          // var sections = await _unitOfWork.Sections.FindAsync(s => s.CourseId == courseId);
+            // if (!sections.Any())
+            //return ResultDto<bool>.FailureResult("Cannot publish course without content");
 
             course.IsPublished = true;
             course.UpdatedAt = DateTime.UtcNow;
