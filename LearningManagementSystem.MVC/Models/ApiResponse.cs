@@ -7,3 +7,4 @@ namespace LearningManagementSystem.MVC.Models
         public T? Data { get; set; }
     }
 }
+

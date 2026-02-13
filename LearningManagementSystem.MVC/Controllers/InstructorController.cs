@@ -15,7 +15,7 @@ namespace LearningManagementSystem.MVC.Controllers
  {
        _httpClient = httpClientFactory.CreateClient();
   _configuration = configuration;
-    // FIX: Update port to 7059 and ensure trailing slash
+
     _httpClient.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/");
    }
 
@@ -28,14 +28,13 @@ namespace LearningManagementSystem.MVC.Controllers
   }
   }
 
-        // GET: Instructor Dashboard
         public async Task<IActionResult> Dashboard()
      {
        SetAuthorizationHeader();
   
  try
    {
-      // Get instructor's courses - REMOVED leading slash
+
    var response = await _httpClient.GetAsync("courses/instructor/me");
        if (response.IsSuccessStatusCode)
         {
@@ -58,14 +57,13 @@ namespace LearningManagementSystem.MVC.Controllers
          return View(new InstructorDashboardViewModel());
         }
 
-     // GET: My Courses
   public async Task<IActionResult> MyCourses()
         {
       SetAuthorizationHeader();
     
  try
     {
-     // REMOVED leading slash
+
      var response = await _httpClient.GetAsync("courses/instructor/me");
    if (response.IsSuccessStatusCode)
         {
@@ -83,14 +81,12 @@ namespace LearningManagementSystem.MVC.Controllers
           return View(new List<CourseResponseDto>());
         }
 
-        // GET: Create Course
 public async Task<IActionResult> CreateCourse()
   {
         await LoadCategories();
         return View(new CreateCourseViewModel());
  }
 
-        // POST: Create Course
  [HttpPost]
         [ValidateAntiForgeryToken]
      public async Task<IActionResult> CreateCourse(CreateCourseViewModel model)
@@ -105,7 +101,7 @@ public async Task<IActionResult> CreateCourse()
 
     try
   {
-    // Convert level string to CourseLevel enum value
+
         int levelValue = model.Level switch
         {
     "Beginner" => 1,
@@ -128,7 +124,6 @@ public async Task<IActionResult> CreateCourse()
         var json = JsonSerializer.Serialize(dto);
   var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        // REMOVED leading slash
         var response = await _httpClient.PostAsync("courses", content);
 
         if (response.IsSuccessStatusCode)
@@ -149,14 +144,13 @@ public async Task<IActionResult> CreateCourse()
     return View(model);
   }
 
-  // GET: Edit Course
      public async Task<IActionResult> EditCourse(int id)
    {
  SetAuthorizationHeader();
 
  try
   {
-   // REMOVED leading slash
+
    var response = await _httpClient.GetAsync($"courses/{id}");
  if (response.IsSuccessStatusCode)
            {
@@ -192,7 +186,6 @@ IsPublished = result.Data.IsPublished
   return RedirectToAction(nameof(MyCourses));
     }
 
-        // POST: Edit Course
         [HttpPost]
      [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditCourse(EditCourseViewModel model)
@@ -207,7 +200,7 @@ IsPublished = result.Data.IsPublished
 
    try
   {
-      // Convert level string to CourseLevel enum value
+
  int levelValue = model.Level switch
         {
         "Beginner" => 1,
@@ -230,7 +223,6 @@ level = levelValue,  // Send as integer, not string
         var json = JsonSerializer.Serialize(dto);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-   // REMOVED leading slash
   var response = await _httpClient.PutAsync($"courses/{model.CourseId}", content);
 
      if (response.IsSuccessStatusCode)
@@ -251,7 +243,6 @@ level = levelValue,  // Send as integer, not string
     return View(model);
         }
 
-   // POST: Delete Course
         [HttpPost]
 public async Task<IActionResult> DeleteCourse(int id)
  {
@@ -259,7 +250,7 @@ public async Task<IActionResult> DeleteCourse(int id)
 
  try
   {
-    // REMOVED leading slash
+
     var response = await _httpClient.DeleteAsync($"courses/{id}");
      if (response.IsSuccessStatusCode)
        {
@@ -278,7 +269,6 @@ catch (Exception ex)
         return RedirectToAction(nameof(MyCourses));
   }
 
-    // POST: Publish/Unpublish Course
     [HttpPost]
       public async Task<IActionResult> TogglePublish(int id, bool publish)
         {
@@ -286,7 +276,7 @@ catch (Exception ex)
 
       try
 {
-   // REMOVED leading slashes
+
   var endpoint = publish ? $"courses/{id}/publish" : $"courses/{id}/unpublish";
      var response = await _httpClient.PostAsync(endpoint, null);
 
@@ -307,14 +297,13 @@ catch (Exception ex)
       return RedirectToAction(nameof(MyCourses));
      }
 
-    // GET: Manage Content (Sections & Lessons)
         public async Task<IActionResult> ManageContent(int id)
         {
    SetAuthorizationHeader();
 
        try
     {
-    // REMOVED leading slash
+
          var response = await _httpClient.GetAsync($"courses/{id}");
  if (response.IsSuccessStatusCode)
  {
@@ -339,7 +328,7 @@ if (result?.Data != null)
   {
      try
   {
-   // REMOVED leading slash
+
    var response = await _httpClient.GetAsync("categories");
    if (response.IsSuccessStatusCode)
        {
@@ -355,3 +344,4 @@ ViewBag.Categories = new List<CategoryDto>();
         }
     }
 }
+

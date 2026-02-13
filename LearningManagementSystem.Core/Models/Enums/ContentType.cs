@@ -1,4 +1,4 @@
-// file: LearningManagementSystem.Core/Models/Enums/ContentType.cs
+
 namespace LearningManagementSystem.Core.Models.Enums
 {
     public enum ContentType

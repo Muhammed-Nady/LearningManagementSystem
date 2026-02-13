@@ -17,9 +17,8 @@ namespace LearningManagementSystem.API.Controllers
     _reviewService = reviewService;
         }
 
-        /// <summary>
-   /// Get all reviews for a course (Public)
-        /// </summary>
+
+
         [HttpGet("course/{courseId}")]
         [AllowAnonymous]
       public async Task<IActionResult> GetCourseReviews(int courseId)
@@ -28,9 +27,8 @@ namespace LearningManagementSystem.API.Controllers
      return Ok(result);
         }
 
-     /// <summary>
-    /// Get average rating for a course (Public)
- /// </summary>
+
+
         [HttpGet("course/{courseId}/rating")]
         [AllowAnonymous]
      public async Task<IActionResult> GetCourseAverageRating(int courseId)
@@ -39,9 +37,8 @@ namespace LearningManagementSystem.API.Controllers
    return Ok(result);
    }
 
-        /// <summary>
- /// Submit a review for a course (Student only)
-        /// </summary>
+
+
      [HttpPost]
         [Authorize(Roles = "Student")]
   public async Task<IActionResult> SubmitReview([FromBody] SubmitReviewRequest request)
@@ -59,9 +56,8 @@ namespace LearningManagementSystem.API.Controllers
      return Ok(result);
     }
 
-        /// <summary>
-        /// Delete a review (Student who created it only)
-        /// </summary>
+
+
     [HttpDelete("{reviewId}")]
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> DeleteReview(int reviewId)
@@ -89,3 +85,4 @@ namespace LearningManagementSystem.API.Controllers
         public string? Comment { get; set; }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿using LearningManagementSystem.Core.Models.Entities;
+using LearningManagementSystem.Core.Models.Entities;
 using LearningManagementSystem.Core.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +6,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        // DbSets for all entities
+
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -16,17 +16,14 @@ namespace LearningManagementSystem.Infrastructrue.Data
         public DbSet<Progress> ProgressRecords { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
-        // Configuration passed via constructor
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Entity configurations will be added here
-            // For now, we'll add basic configurations
 
-            // User configuration
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
@@ -36,14 +33,12 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);
             });
 
-            // Category configuration
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.HasKey(e => e.CategoryId);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
             });
 
-            // Course configuration
             modelBuilder.Entity<Course>(entity =>
             {
                 entity.HasKey(e => e.CourseId);
@@ -51,7 +46,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 entity.Property(e => e.Description).IsRequired();
                 entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
 
-                // Relationships
                 entity.HasOne(e => e.Instructor)
                     .WithMany(u => u.CoursesAsInstructor)
                     .HasForeignKey(e => e.InstructorId)
@@ -63,7 +57,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // Section configuration
             modelBuilder.Entity<Section>(entity =>
             {
                 entity.HasKey(e => e.SectionId);
@@ -75,7 +68,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Lesson configuration
             modelBuilder.Entity<Lesson>(entity =>
             {
                 entity.HasKey(e => e.LessonId);
@@ -87,7 +79,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Enrollment configuration
             modelBuilder.Entity<Enrollment>(entity =>
             {
                 entity.HasKey(e => e.EnrollmentId);
@@ -105,7 +96,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Progress configuration
             modelBuilder.Entity<Progress>(entity =>
             {
                 entity.HasKey(e => e.ProgressId);
@@ -122,7 +112,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Review configuration
             modelBuilder.Entity<Review>(entity =>
             {
                 entity.HasKey(e => e.ReviewId);
@@ -140,13 +129,11 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // ============================================
-            // SEED DATA
-            // ============================================
 
-            // Seed Users (Admin, Instructors, Students)
+
+
             modelBuilder.Entity<User>().HasData(
-                // Admin
+
                 new User
                 {
                     UserId = 1,
@@ -158,7 +145,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Instructors
+
                 new User
                 {
                     UserId = 2,
@@ -192,7 +179,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Students
+
                 new User
                 {
                     UserId = 5,
@@ -217,7 +204,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 }
             );
 
-            // Seed Categories
             modelBuilder.Entity<Category>().HasData(
                 new Category { CategoryId = 1, Name = "Web Development", Description = "Learn web technologies and frameworks", CreatedAt = DateTime.UtcNow },
                 new Category { CategoryId = 2, Name = "Mobile Development", Description = "Build mobile applications", CreatedAt = DateTime.UtcNow },
@@ -228,9 +214,8 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 new Category { CategoryId = 7, Name = "Business", Description = "Management and entrepreneurship", CreatedAt = DateTime.UtcNow }
             );
 
-            // Seed Courses with Real Image URLs
             modelBuilder.Entity<Course>().HasData(
-                // Web Development Courses
+
                 new Course
                 {
                     CourseId = 1,
@@ -273,7 +258,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 129.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Mobile Development
+
                 new Course
                 {
                     CourseId = 4,
@@ -302,7 +287,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 84.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Data Science
+
                 new Course
                 {
                     CourseId = 6,
@@ -331,7 +316,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 139.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Cloud Computing
+
                 new Course
                 {
                     CourseId = 8,
@@ -360,7 +345,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 69.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // DevOps
+
                 new Course
                 {
                     CourseId = 10,
@@ -375,7 +360,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 99.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Design
+
                 new Course
                 {
                     CourseId = 11,
@@ -390,7 +375,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 59.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Business
+
                 new Course
                 {
                     CourseId = 12,
@@ -405,7 +390,7 @@ namespace LearningManagementSystem.Infrastructrue.Data
                     Price = 74.99m,
                     CreatedAt = DateTime.UtcNow
                 },
-                // Free Courses
+
                 new Course
                 {
                     CourseId = 13,
@@ -436,14 +421,12 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 }
             );
 
-            // Seed Sections for Course 1 (Complete React Developer)
             modelBuilder.Entity<Section>().HasData(
                 new Section { SectionId = 1, CourseId = 1, Title = "React Fundamentals", Description = "Learn the basics of React", OrderIndex = 1, CreatedAt = DateTime.UtcNow },
                 new Section { SectionId = 2, CourseId = 1, Title = "Advanced React Patterns", Description = "Master advanced concepts", OrderIndex = 2, CreatedAt = DateTime.UtcNow },
                 new Section { SectionId = 3, CourseId = 1, Title = "State Management with Redux", Description = "Learn Redux for complex apps", OrderIndex = 3, CreatedAt = DateTime.UtcNow }
             );
 
-            // Seed Lessons for Section 1
             modelBuilder.Entity<Lesson>().HasData(
                 new Lesson
                 {
@@ -483,7 +466,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 }
             );
 
-            // Seed Enrollments
             modelBuilder.Entity<Enrollment>().HasData(
                 new Enrollment
                 {
@@ -524,7 +506,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 }
             );
 
-            // Seed Progress Records
             modelBuilder.Entity<Progress>().HasData(
                 new Progress
                 {
@@ -555,7 +536,6 @@ namespace LearningManagementSystem.Infrastructrue.Data
                 }
             );
 
-            // Seed Reviews
             modelBuilder.Entity<Review>().HasData(
                 new Review
                 {
@@ -588,3 +568,4 @@ namespace LearningManagementSystem.Infrastructrue.Data
         }
     }
 }
+

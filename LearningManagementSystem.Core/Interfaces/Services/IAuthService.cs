@@ -1,4 +1,4 @@
-﻿using LearningManagementSystem.Core.DTOs.Auth;
+using LearningManagementSystem.Core.DTOs.Auth;
 using LearningManagementSystem.Core.DTOs.Common;
 using System;
 using System.Collections.Generic;
@@ -15,3 +15,4 @@ namespace LearningManagementSystem.Core.Interfaces.Services
         Task<bool> ValidateTokenAsync(string token);
     }
 }
+

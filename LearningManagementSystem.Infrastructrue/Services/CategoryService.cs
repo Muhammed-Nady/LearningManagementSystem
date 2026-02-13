@@ -50,7 +50,6 @@ namespace LearningManagementSystem.Infrastructrue.Services
             if (category == null)
                 return ResultDto<bool>.FailureResult("Category not found");
 
-            // Check if category has courses
             var hasCourses = await _unitOfWork.Courses.AnyAsync(c => c.CategoryId == categoryId);
             if (hasCourses)
                 return ResultDto<bool>.FailureResult("Cannot delete category with existing courses");
@@ -62,3 +61,4 @@ namespace LearningManagementSystem.Infrastructrue.Services
         }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿namespace LearningManagementSystem.Core.Models.Enums
+namespace LearningManagementSystem.Core.Models.Enums
 {
     public enum UserRole
     {
@@ -7,3 +7,4 @@
         Student = 3
     }
 }
+

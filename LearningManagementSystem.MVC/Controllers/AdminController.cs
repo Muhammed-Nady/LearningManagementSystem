@@ -15,7 +15,7 @@ private readonly IConfiguration _configuration;
   {
     _httpClient = httpClientFactory.CreateClient();
  _configuration = configuration;
-   // FIX: Update port to 7059 and ensure trailing slash
+
    _httpClient.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/");
      }
 
@@ -28,14 +28,13 @@ private readonly IConfiguration _configuration;
 }
         }
 
-      // GET: Admin Dashboard
         public async Task<IActionResult> Dashboard()
   {
        SetAuthorizationHeader();
 
 try
      {
-  // Get all users - REMOVED leading slashes
+
   var usersResponse = await _httpClient.GetAsync("users");
  var coursesResponse = await _httpClient.GetAsync("courses");
    var categoriesResponse = await _httpClient.GetAsync("categories");
@@ -74,14 +73,13 @@ viewModel.TotalCourses = result?.Data?.Count ?? 0;
    }
 }
 
-  // GET: Manage Users
    public async Task<IActionResult> ManageUsers()
         {
    SetAuthorizationHeader();
 
        try
   {
-      // REMOVED leading slash
+
       var response = await _httpClient.GetAsync("users");
     if (response.IsSuccessStatusCode)
       {
@@ -98,7 +96,6 @@ var content = await response.Content.ReadAsStringAsync();
   return View(new List<UserDto>());
      }
 
-// POST: Activate User
       [HttpPost]
     public async Task<IActionResult> ActivateUser(int id)
  {
@@ -106,7 +103,7 @@ var content = await response.Content.ReadAsStringAsync();
 
       try
     {
-   // REMOVED leading slash
+
    var response = await _httpClient.PostAsync($"users/{id}/activate", null);
   if (response.IsSuccessStatusCode)
        {
@@ -125,7 +122,6 @@ var content = await response.Content.ReadAsStringAsync();
    return RedirectToAction(nameof(ManageUsers));
  }
 
-   // POST: Deactivate User
     [HttpPost]
 public async Task<IActionResult> DeactivateUser(int id)
       {
@@ -133,7 +129,7 @@ SetAuthorizationHeader();
 
   try
     {
-   // REMOVED leading slash
+
    var response = await _httpClient.PostAsync($"users/{id}/deactivate", null);
      if (response.IsSuccessStatusCode)
 {
@@ -152,14 +148,13 @@ SetAuthorizationHeader();
      return RedirectToAction(nameof(ManageUsers));
    }
 
- // GET: Manage Categories
      public async Task<IActionResult> ManageCategories()
         {
    SetAuthorizationHeader();
 
     try
    {
-        // REMOVED leading slash
+
   var response = await _httpClient.GetAsync("categories");
    if (response.IsSuccessStatusCode)
   {
@@ -176,7 +171,6 @@ return View(result?.Data ?? new List<CategoryDto>());
 return View(new List<CategoryDto>());
    }
 
-  // POST: Create Category
      [HttpPost]
    [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCategory(string name, string? description)
@@ -189,7 +183,6 @@ return View(new List<CategoryDto>());
      var json = JsonSerializer.Serialize(dto);
  var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-   // REMOVED leading slash
    var response = await _httpClient.PostAsync("categories", content);
     if (response.IsSuccessStatusCode)
       {
@@ -208,7 +201,6 @@ else
      return RedirectToAction(nameof(ManageCategories));
     }
 
-   // POST: Delete Category
   [HttpPost]
   public async Task<IActionResult> DeleteCategory(int id)
       {
@@ -216,7 +208,7 @@ else
 
      try
    {
-// REMOVED leading slash
+
 var response = await _httpClient.DeleteAsync($"categories/{id}");
     if (response.IsSuccessStatusCode)
       {
@@ -247,3 +239,4 @@ public class UserDto
  public DateTime CreatedAt { get; set; }
     }
 }
+

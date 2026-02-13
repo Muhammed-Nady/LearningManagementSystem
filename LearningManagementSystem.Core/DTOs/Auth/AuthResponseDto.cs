@@ -11,3 +11,4 @@ namespace LearningManagementSystem.Core.DTOs.Auth
         public DateTime ExpiresAt { get; set; }
     }
 }
+

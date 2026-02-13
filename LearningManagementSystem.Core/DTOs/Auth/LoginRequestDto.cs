@@ -6,3 +6,4 @@ namespace LearningManagementSystem.Core.DTOs.Auth
         public string Password { get; set; } = string.Empty;
     }
 }
+

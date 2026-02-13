@@ -17,7 +17,6 @@ namespace LearningManagementSystem.MVC.Controllers
             _logger = logger;
         }
 
-        // GET: /Courses
         [HttpGet]
         public async Task<IActionResult> Index(int? category, string? level, string? search)
         {
@@ -34,7 +33,7 @@ namespace LearningManagementSystem.MVC.Controllers
 
             try
             {
-                // Fetch courses
+
                 var coursesResponse = await client.GetAsync("courses");
                 if (coursesResponse.IsSuccessStatusCode)
                 {
@@ -49,7 +48,6 @@ namespace LearningManagementSystem.MVC.Controllers
                     }
                 }
 
-                // Fetch categories
                 var categoriesResponse = await client.GetAsync("categories");
                 if (categoriesResponse.IsSuccessStatusCode)
                 {
@@ -68,7 +66,6 @@ namespace LearningManagementSystem.MVC.Controllers
                     }
                 }
 
-                // Apply filters
                 if (category.HasValue)
                 {
                     model.Courses = model.Courses.Where(c => c.CategoryId == category.Value).ToList();
@@ -94,11 +91,10 @@ namespace LearningManagementSystem.MVC.Controllers
             return View(model);
         }
 
-        // GET: /Courses/Details/5
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            // FIX: Ensure trailing slash for proper URL construction
+
             var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/";
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(apiBase);
@@ -179,3 +175,4 @@ namespace LearningManagementSystem.MVC.Controllers
         }
     }
 }
+

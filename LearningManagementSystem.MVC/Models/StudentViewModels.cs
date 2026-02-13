@@ -61,3 +61,4 @@ public string ThumbnailUrl { get; set; } = string.Empty;
         public bool IsFree { get; set; }
     }
 }
+

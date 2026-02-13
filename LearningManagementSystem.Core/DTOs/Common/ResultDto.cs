@@ -28,3 +28,4 @@ namespace LearningManagementSystem.Core.DTOs.Common
         }
     }
 }
+

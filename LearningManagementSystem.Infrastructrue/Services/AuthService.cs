@@ -25,17 +25,15 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
         public async Task<ResultDto<AuthResponseDto>> RegisterAsync(RegisterRequestDto dto)
         {
-            // Check if email already exists
+
             var existingUser = await _unitOfWork.Users
         .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (existingUser != null)
                 return ResultDto<AuthResponseDto>.FailureResult("Email already registered");
 
-            // Hash password
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
-            // Create user
             var user = new User
             {
                 Email = dto.Email,
@@ -50,7 +48,6 @@ namespace LearningManagementSystem.Infrastructrue.Services
             await _unitOfWork.Users.AddAsync(user);
             await _unitOfWork.SaveChangesAsync();
 
-            // Generate token
             var token = GenerateJwtToken(user);
 
             var response = new AuthResponseDto
@@ -70,22 +67,19 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
         public async Task<ResultDto<AuthResponseDto>> LoginAsync(LoginRequestDto dto)
         {
-            // Find user
+
             var user = await _unitOfWork.Users
                 .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (user == null)
                 return ResultDto<AuthResponseDto>.FailureResult("Invalid credentials");
 
-            // Check if user is active
             if (!user.IsActive)
                 return ResultDto<AuthResponseDto>.FailureResult("Account is deactivated");
 
-            // Verify password
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return ResultDto<AuthResponseDto>.FailureResult("Invalid credentials");
 
-            // Generate token
             var token = GenerateJwtToken(user);
 
             var response = new AuthResponseDto
@@ -160,3 +154,4 @@ namespace LearningManagementSystem.Infrastructrue.Services
         }
     }
 }
+

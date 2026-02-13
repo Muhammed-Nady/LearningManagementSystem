@@ -1,4 +1,4 @@
-// file: LearningManagementSystem.Core/Models/Entities/Section.cs
+
 namespace LearningManagementSystem.Core.Models.Entities
 {
     public class Section
@@ -10,7 +10,6 @@ namespace LearningManagementSystem.Core.Models.Entities
         public int OrderIndex { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // Navigation Properties
         public Course Course { get; set; } = null!;
         public ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
     }

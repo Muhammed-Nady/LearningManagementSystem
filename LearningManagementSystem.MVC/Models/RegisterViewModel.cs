@@ -33,3 +33,4 @@ namespace LearningManagementSystem.MVC.Models
         public bool RegisterAsInstructor { get; set; }
     }
 }
+

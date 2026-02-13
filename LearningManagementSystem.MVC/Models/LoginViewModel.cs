@@ -17,3 +17,4 @@ namespace LearningManagementSystem.MVC.Models
         public string? ReturnUrl { get; set; }
     }
 }
+

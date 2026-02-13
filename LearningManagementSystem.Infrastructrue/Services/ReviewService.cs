@@ -17,31 +17,27 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
         public async Task<ResultDto<Review>> SubmitReviewAsync(int studentId, int courseId, int rating, string? comment)
         {
-            // Validate student
+
             var student = await _unitOfWork.Users.GetByIdAsync(studentId);
             if (student == null || student.Role != UserRole.Student)
                 return ResultDto<Review>.FailureResult("Invalid student");
 
-            // Validate course
             var course = await _unitOfWork.Courses.GetByIdAsync(courseId);
             if (course == null)
                 return ResultDto<Review>.FailureResult("Course not found");
 
-            // Check if student is enrolled
             var isEnrolled = await _unitOfWork.Enrollments
              .AnyAsync(e => e.StudentId == studentId && e.CourseId == courseId);
 
             if (!isEnrolled)
                 return ResultDto<Review>.FailureResult("Must be enrolled to review");
 
-            // Check if review already exists
             var existingReview = await _unitOfWork.Reviews
                   .FirstOrDefaultAsync(r => r.StudentId == studentId && r.CourseId == courseId);
 
             if (existingReview != null)
                 return ResultDto<Review>.FailureResult("Review already submitted");
 
-            // Validate rating
             if (rating < 1 || rating > 5)
                 return ResultDto<Review>.FailureResult("Rating must be between 1 and 5");
 
@@ -89,3 +85,4 @@ namespace LearningManagementSystem.Infrastructrue.Services
         }
     }
 }
+

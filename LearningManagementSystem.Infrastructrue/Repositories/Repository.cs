@@ -48,7 +48,6 @@ namespace LearningManagementSystem.Infrastructrue.Repositories
                 : await _dbSet.CountAsync(predicate);
         }
 
-        // NEW: Eager loading methods to prevent N+1 queries
         public virtual async Task<T?> GetByIdWithIncludesAsync(int id, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = _dbSet;
@@ -58,13 +57,11 @@ namespace LearningManagementSystem.Infrastructrue.Repositories
                 query = query.Include(include);
             }
 
-            // Build a simple predicate that tries the conventional primary key name
-            // Use Find first to get the primary key name, then build query
+
             var entity = await _dbSet.FindAsync(id);
             if (entity == null)
                 return null;
 
-            // Now get it with includes
             var keyProperty = _context.Model.FindEntityType(typeof(T))?.FindPrimaryKey()?.Properties.FirstOrDefault();
             if (keyProperty == null)
                 return null;
@@ -129,3 +126,4 @@ namespace LearningManagementSystem.Infrastructrue.Repositories
         }
     }
 }
+

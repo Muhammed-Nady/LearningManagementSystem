@@ -15,9 +15,8 @@ namespace LearningManagementSystem.API.Controllers
             _authService = authService;
         }
 
-        /// <summary>
-        /// Register a new user
-        /// </summary>
+
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto dto)
         {
@@ -29,9 +28,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Login user and get JWT token
-        /// </summary>
+
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
         {
@@ -43,9 +41,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Validate JWT token
-        /// </summary>
+
+
         [HttpPost("validate-token")]
         public async Task<IActionResult> ValidateToken([FromBody] string token)
         {
@@ -54,3 +51,4 @@ namespace LearningManagementSystem.API.Controllers
         }
     }
 }
+

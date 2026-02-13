@@ -17,17 +17,15 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
         public async Task<ResultDto<bool>> EnrollStudentAsync(int studentId, int courseId)
         {
-            // Validate student
+
             var student = await _unitOfWork.Users.GetByIdAsync(studentId);
             if (student == null || student.Role != UserRole.Student)
                 return ResultDto<bool>.FailureResult("Invalid student");
 
-            // Validate course
             var course = await _unitOfWork.Courses.GetByIdAsync(courseId);
             if (course == null || !course.IsPublished)
                 return ResultDto<bool>.FailureResult("Course not available");
 
-            // Check duplicate enrollment
             var existingEnrollment = await _unitOfWork.Enrollments
                   .FirstOrDefaultAsync(e => e.StudentId == studentId && e.CourseId == courseId);
 
@@ -82,3 +80,4 @@ namespace LearningManagementSystem.Infrastructrue.Services
         }
     }
 }
+

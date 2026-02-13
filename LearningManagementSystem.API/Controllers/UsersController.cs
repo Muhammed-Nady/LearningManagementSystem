@@ -16,9 +16,8 @@ namespace LearningManagementSystem.API.Controllers
             _userService = userService;
         }
 
-        /// <summary>
-        /// Get all users (Admin only)
-        /// </summary>
+
+
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -26,9 +25,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Get user by ID (Admin only)
-        /// </summary>
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
@@ -40,9 +38,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Deactivate a user (Admin only)
-        /// </summary>
+
+
         [HttpPost("{id}/deactivate")]
         public async Task<IActionResult> DeactivateUser(int id)
         {
@@ -54,9 +51,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Activate a user (Admin only)
-        /// </summary>
+
+
         [HttpPost("{id}/activate")]
         public async Task<IActionResult> ActivateUser(int id)
         {
@@ -69,3 +65,4 @@ namespace LearningManagementSystem.API.Controllers
         }
     }
 }
+

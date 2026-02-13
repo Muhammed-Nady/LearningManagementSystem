@@ -55,3 +55,4 @@ namespace LearningManagementSystem.MVC.Models
         public double AverageRating { get; set; }
     }
 }
+

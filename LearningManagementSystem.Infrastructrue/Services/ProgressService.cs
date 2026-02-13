@@ -17,7 +17,7 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
         public async Task<ResultDto<bool>> MarkLessonCompleteAsync(int studentId, int lessonId)
         {
-            // Check if student is enrolled in the course
+
             var lesson = await _unitOfWork.Lessons.GetByIdAsync(lessonId);
             if (lesson == null)
                 return ResultDto<bool>.FailureResult("Lesson not found");
@@ -29,7 +29,6 @@ namespace LearningManagementSystem.Infrastructrue.Services
             if (!isEnrolled)
                 return ResultDto<bool>.FailureResult("Not enrolled in this course");
 
-            // Check if progress already exists
             var existingProgress = await _unitOfWork.ProgressRecords
                 .FirstOrDefaultAsync(p => p.StudentId == studentId && p.LessonId == lessonId);
 
@@ -55,7 +54,6 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
             await _unitOfWork.SaveChangesAsync();
 
-            // Update enrollment progress percentage
             await UpdateEnrollmentProgressAsync(studentId, section!.CourseId);
 
             return ResultDto<bool>.SuccessResult(true, "Lesson marked as complete");
@@ -63,7 +61,7 @@ namespace LearningManagementSystem.Infrastructrue.Services
 
         public async Task<ResultDto<decimal>> CalculateCourseProgressAsync(int studentId, int courseId)
         {
-            // Get all lessons in course
+
             var sections = await _unitOfWork.Sections.FindAsync(s => s.CourseId == courseId);
             var sectionIds = sections.Select(s => s.SectionId).ToList();
 
@@ -78,7 +76,6 @@ namespace LearningManagementSystem.Infrastructrue.Services
             if (totalLessons == 0)
                 return ResultDto<decimal>.SuccessResult(0);
 
-            // Get completed lessons
             var completedLessons = await _unitOfWork.ProgressRecords
         .CountAsync(p => p.StudentId == studentId && p.IsCompleted && allLessons.Select(l => l.LessonId).Contains(p.LessonId));
 
@@ -123,3 +120,4 @@ namespace LearningManagementSystem.Infrastructrue.Services
         }
     }
 }
+

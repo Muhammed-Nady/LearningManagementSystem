@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace LearningManagementSystem.Infrastructrue.Migrations
 {
-    /// <inheritdoc />
+
     public partial class Initial : Migration
     {
-        /// <inheritdoc />
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -280,7 +280,6 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                 unique: true);
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -309,3 +308,4 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
         }
     }
 }
+

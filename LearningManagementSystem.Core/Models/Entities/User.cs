@@ -1,4 +1,4 @@
-// file: LearningManagementSystem.MVC/Models/Entities/User.cs
+
 using LearningManagementSystem.Core.Models.Enums;
 
 namespace LearningManagementSystem.Core.Models.Entities
@@ -15,7 +15,6 @@ namespace LearningManagementSystem.Core.Models.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
 
-        // Navigation Properties
         public ICollection<Course> CoursesAsInstructor { get; set; } = new List<Course>();
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
         public ICollection<Progress> ProgressRecords { get; set; } = new List<Progress>();

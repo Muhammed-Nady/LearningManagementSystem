@@ -31,7 +31,6 @@ namespace LearningManagementSystem.MVC.Controllers
                 client.BaseAddress = new Uri(apiBase);
                 client.Timeout = TimeSpan.FromSeconds(30);
 
-                // Fetch courses - NO leading slash
                 var coursesResponse = await client.GetAsync("courses");
                 _logger.LogInformation("Courses API Response: {StatusCode}", coursesResponse.StatusCode);
 
@@ -76,7 +75,6 @@ namespace LearningManagementSystem.MVC.Controllers
                     _logger.LogError("Error content: {Content}", errorContent);
                 }
 
-                // Fetch categories - REMOVED leading slash
                 var categoriesResponse = await client.GetAsync("categories");
                 if (categoriesResponse.IsSuccessStatusCode)
                 {
@@ -132,3 +130,4 @@ namespace LearningManagementSystem.MVC.Controllers
         }
     }
 }
+

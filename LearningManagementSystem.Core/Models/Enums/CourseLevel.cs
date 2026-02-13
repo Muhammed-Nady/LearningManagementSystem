@@ -1,4 +1,4 @@
-// file: LearningManagementSystem.Core/Models/Enums/CourseLevel.cs
+
 namespace LearningManagementSystem.Core.Models.Enums
 {
     public enum CourseLevel

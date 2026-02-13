@@ -9,3 +9,4 @@ namespace LearningManagementSystem.Core.Interfaces.Services
         Task<ResultDto<int?>> GetLastAccessedLessonAsync(int studentId, int courseId);
     }
 }
+

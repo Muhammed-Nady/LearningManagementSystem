@@ -19,3 +19,4 @@ namespace LearningManagementSystem.Core.DTOs.Course
         public double AverageRating { get; set; }
     }
 }
+

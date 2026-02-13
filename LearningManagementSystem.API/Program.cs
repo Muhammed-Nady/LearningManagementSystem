@@ -17,32 +17,24 @@ namespace LearningManagementSystem.API
         {
          var builder = WebApplication.CreateBuilder(args);
 
-            // Database Configuration
             ConfigureDatabase(builder);
 
-          // Dependency Injection
        ConfigureRepositories(builder);
       ConfigureServices(builder);
 
-    // Authentication & Authorization
      ConfigureAuthentication(builder);
             ConfigureAuthorization(builder);
 
-            // CORS Configuration
      ConfigureCors(builder);
 
-   // Response Caching & Compression
     ConfigurePerformance(builder);
 
-    // API Controllers
             builder.Services.AddControllers();
 
-            // Swagger Configuration
          ConfigureSwagger(builder);
 
             var app = builder.Build();
 
-        // Configure HTTP Request Pipeline
   ConfigurePipeline(app);
 
     app.Run();
@@ -63,16 +55,14 @@ namespace LearningManagementSystem.API
 
   private static void ConfigurePerformance(WebApplicationBuilder builder)
       {
-     // Response Caching
+
   builder.Services.AddResponseCaching();
-      
-  // Response Compression
+
       builder.Services.AddResponseCompression(options =>
      {
  options.EnableForHttps = true;
       });
 
-     // Memory Cache
      builder.Services.AddMemoryCache();
   }
 
@@ -188,10 +178,8 @@ namespace LearningManagementSystem.API
 
             app.UseHttpsRedirection();
 
-   // Enable response compression
    app.UseResponseCompression();
 
-   // Enable response caching
   app.UseResponseCaching();
 
   var corsSettings = app.Configuration.GetSection("Cors");
@@ -204,3 +192,4 @@ app.UseAuthorization();
         }
     }
 }
+

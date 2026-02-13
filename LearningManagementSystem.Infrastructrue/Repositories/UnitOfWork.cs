@@ -8,7 +8,6 @@ namespace LearningManagementSystem.Infrastructrue.Repositories
     {
         private readonly ApplicationDbContext _context;
 
-        // Lazy initialization of repositories
         private IRepository<User>? _users;
         private IRepository<Category>? _categories;
         private IRepository<Course>? _courses;
@@ -48,3 +47,4 @@ namespace LearningManagementSystem.Infrastructrue.Repositories
         }
     }
 }
+

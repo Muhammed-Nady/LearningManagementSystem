@@ -17,10 +17,9 @@ namespace LearningManagementSystem.MVC.Controllers
             _logger = logger;
         }
 
-        // GET: /Student/Dashboard
         public async Task<IActionResult> Dashboard()
 {
-     // FIX: Update port to 7059 and ensure trailing slash
+
      var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/";
       var client = _httpClientFactory.CreateClient();
  client.BaseAddress = new Uri(apiBase);
@@ -29,7 +28,7 @@ namespace LearningManagementSystem.MVC.Controllers
 
     try
     {
-   // Get auth token from cookie
+
       var token = Request.Cookies["AuthToken"];
           if (!string.IsNullOrEmpty(token))
           {
@@ -38,13 +37,12 @@ namespace LearningManagementSystem.MVC.Controllers
     }
       else
           {
-     // If not authenticated, redirect to login
+
      return RedirectToAction("Login", "Account", new { returnUrl = "/Student/Dashboard" });
       }
 
       _logger.LogInformation("Fetching student dashboard data");
 
-      // Get enrolled course IDs
        var enrollmentsResponse = await client.GetAsync("enrollments/my-courses");
             
    if (enrollmentsResponse.IsSuccessStatusCode)
@@ -57,7 +55,6 @@ namespace LearningManagementSystem.MVC.Controllers
    var courseIdsList = courseIds.EnumerateArray().Select(c => c.GetInt32()).ToList();
            model.TotalEnrolledCourses = courseIdsList.Count;
 
-     // Fetch recent courses (limit to 3)
      foreach (var id in courseIdsList.Take(3))
  {
      var courseResponse = await client.GetAsync($"courses/{id}");
@@ -109,7 +106,6 @@ namespace LearningManagementSystem.MVC.Controllers
 return View(model);
         }
 
-        // GET: /Student/MyCourses
         public async Task<IActionResult> MyCourses()
         {
 var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/";
@@ -120,7 +116,7 @@ var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/a
 
          try
          {
- // Get auth token from cookie
+
    var token = Request.Cookies["AuthToken"];
     if (!string.IsNullOrEmpty(token))
                 {
@@ -129,13 +125,12 @@ var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/a
            }
                 else
      {
-           // If not authenticated, redirect to login
+
        return RedirectToAction("Login", "Account", new { returnUrl = "/Student/MyCourses" });
     }
 
  _logger.LogInformation("Fetching enrolled courses for student");
 
-         // Get enrolled course IDs
             var enrollmentsResponse = await client.GetAsync("enrollments/my-courses");
              _logger.LogInformation("Enrollments API response: {StatusCode}", enrollmentsResponse.StatusCode);
 
@@ -147,7 +142,7 @@ var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/a
       var enrollmentsDoc = JsonDocument.Parse(enrollmentsJson);
             if (enrollmentsDoc.RootElement.TryGetProperty("data", out var courseIds))
      {
-   // Fetch details for each enrolled course
+
          foreach (var courseId in courseIds.EnumerateArray())
         {
          var id = courseId.GetInt32();
@@ -211,17 +206,16 @@ var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/a
      return View(model);
         }
 
-  // GET: /Student/Learn/5
         public async Task<IActionResult> Learn(int id)
     {
-  // FIX: Update port to 7059 and ensure trailing slash
+
    var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/";
    var client = _httpClientFactory.CreateClient();
   client.BaseAddress = new Uri(apiBase);
 
       try
     {
-    // REMOVED leading slash
+
     var response = await client.GetAsync($"courses/{id}");
       if (response.IsSuccessStatusCode)
         {
@@ -250,3 +244,4 @@ var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/a
         }
     }
 }
+

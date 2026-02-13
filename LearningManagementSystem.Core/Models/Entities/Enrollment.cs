@@ -1,4 +1,4 @@
-// file: LearningManagementSystem.MVC/Models/Entities/Enrollment.cs
+
 using LearningManagementSystem.Core.Models.Enums;
 
 namespace LearningManagementSystem.Core.Models.Entities
@@ -13,7 +13,6 @@ namespace LearningManagementSystem.Core.Models.Entities
    public EnrollmentStatus Status { get; set; } = EnrollmentStatus.Active;
      public decimal ProgressPercentage { get; set; } = 0;
 
-        // Navigation Properties
    public User Student { get; set; } = null!;
         public Course Course { get; set; } = null!;
     }

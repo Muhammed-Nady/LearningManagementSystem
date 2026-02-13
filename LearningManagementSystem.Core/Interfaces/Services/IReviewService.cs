@@ -11,3 +11,4 @@ namespace LearningManagementSystem.Core.Interfaces.Services
         Task<ResultDto<bool>> DeleteReviewAsync(int reviewId, int studentId);
     }
 }
+

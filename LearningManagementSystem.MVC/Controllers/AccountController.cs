@@ -18,7 +18,7 @@ namespace LearningManagementSystem.MVC.Controllers
             return View(new RegisterViewModel());
         }
 
-        // Login/Register are handled client-side via auth.js
-        // These actions just render the forms
+
     }
 }
+

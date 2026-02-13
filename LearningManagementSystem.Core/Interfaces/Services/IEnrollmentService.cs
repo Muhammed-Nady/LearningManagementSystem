@@ -10,3 +10,4 @@ namespace LearningManagementSystem.Core.Interfaces.Services
         Task<ResultDto<IEnumerable<int>>> GetStudentCourseIdsAsync(int studentId);
     }
 }
+

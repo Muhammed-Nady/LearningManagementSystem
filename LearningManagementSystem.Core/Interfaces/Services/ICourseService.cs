@@ -18,3 +18,4 @@ namespace LearningManagementSystem.Core.Interfaces.Services
         Task<ResultDto<bool>> UnpublishCourseAsync(int courseId, int instructorId);
     }
 }
+

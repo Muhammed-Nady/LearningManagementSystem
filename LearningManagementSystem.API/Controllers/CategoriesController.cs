@@ -15,9 +15,8 @@ namespace LearningManagementSystem.API.Controllers
             _categoryService = categoryService;
         }
 
-        /// <summary>
-        /// Get all categories (Public)
-        /// </summary>
+
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllCategories()
@@ -26,9 +25,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Get category by ID (Public)
-        /// </summary>
+
+
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetCategoryById(int id)
@@ -41,9 +39,8 @@ namespace LearningManagementSystem.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Create a new category (Admin only)
-        /// </summary>
+
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequest request)
@@ -56,9 +53,8 @@ namespace LearningManagementSystem.API.Controllers
             return CreatedAtAction(nameof(GetCategoryById), new { id = result.Data!.CategoryId }, result);
         }
 
-        /// <summary>
-        /// Delete a category (Admin only)
-        /// </summary>
+
+
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCategory(int id)
@@ -78,3 +74,4 @@ namespace LearningManagementSystem.API.Controllers
         public string? Description { get; set; }
     }
 }
+

@@ -13,3 +13,4 @@ namespace LearningManagementSystem.Core.DTOs.Course
         public decimal Price { get; set; }
     }
 }
+

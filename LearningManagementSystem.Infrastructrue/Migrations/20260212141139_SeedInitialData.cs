@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LearningManagementSystem.Infrastructrue.Migrations
 {
-    /// <inheritdoc />
+
     public partial class SeedInitialData : Migration
     {
-        /// <inheritdoc />
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
@@ -113,7 +113,6 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                 });
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
@@ -333,3 +332,4 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
         }
     }
 }
+

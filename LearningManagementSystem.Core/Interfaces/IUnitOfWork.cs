@@ -4,7 +4,7 @@ namespace LearningManagementSystem.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        // Repositories
+
         IRepository<User> Users { get; }
         IRepository<Category> Categories { get; }
         IRepository<Course> Courses { get; }
@@ -14,8 +14,8 @@ namespace LearningManagementSystem.Core.Interfaces
         IRepository<Progress> ProgressRecords { get; }
         IRepository<Review> Reviews { get; }
 
-        // Save changes
         Task<int> SaveChangesAsync();
         int SaveChanges();
     }
 }
+

@@ -1,4 +1,4 @@
-// file: LearningManagementSystem.Core/Models/Entities/Lesson.cs
+
 using LearningManagementSystem.Core.Models.Enums;
 
 namespace LearningManagementSystem.Core.Models.Entities
@@ -16,7 +16,6 @@ namespace LearningManagementSystem.Core.Models.Entities
         public bool IsFree { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // Navigation Properties
         public Section Section { get; set; } = null!;
         public ICollection<Progress> ProgressRecords { get; set; } = new List<Progress>();
     }

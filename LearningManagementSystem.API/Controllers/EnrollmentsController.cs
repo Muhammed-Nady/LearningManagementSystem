@@ -17,9 +17,8 @@ namespace LearningManagementSystem.API.Controllers
  _enrollmentService = enrollmentService;
   }
 
-        /// <summary>
-        /// Enroll current student in a course
-  /// </summary>
+
+
 [HttpPost("{courseId}")]
   [Authorize(Roles = "Student")]
         public async Task<IActionResult> EnrollInCourse(int courseId)
@@ -33,9 +32,8 @@ return BadRequest(result);
   return Ok(result);
      }
 
-   /// <summary>
-      /// Unenroll current student from a course
- /// </summary>
+
+
    [HttpDelete("{courseId}")]
         [Authorize(Roles = "Student")]
     public async Task<IActionResult> UnenrollFromCourse(int courseId)
@@ -49,9 +47,8 @@ var studentId = GetCurrentUserId();
      return NoContent();
    }
 
-        /// <summary>
-        /// Check if current student is enrolled in a course
-    /// </summary>
+
+
      [HttpGet("{courseId}/check")]
    [Authorize(Roles = "Student")]
         public async Task<IActionResult> CheckEnrollment(int courseId)
@@ -62,9 +59,8 @@ var studentId = GetCurrentUserId();
  return Ok(result);
   }
 
-    /// <summary>
-        /// Get all courses current student is enrolled in
-      /// </summary>
+
+
         [HttpGet("my-courses")]
    [Authorize(Roles = "Student")]
         public async Task<IActionResult> GetMyEnrolledCourses()
@@ -82,3 +78,4 @@ var studentId = GetCurrentUserId();
         }
   }
 }
+

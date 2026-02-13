@@ -17,9 +17,8 @@ namespace LearningManagementSystem.API.Controllers
       _progressService = progressService;
         }
 
-  /// <summary>
-        /// Mark a lesson as complete
-        /// </summary>
+
+
      [HttpPost("lessons/{lessonId}/complete")]
         public async Task<IActionResult> MarkLessonComplete(int lessonId)
 {
@@ -32,9 +31,8 @@ namespace LearningManagementSystem.API.Controllers
    return Ok(result);
      }
 
-/// <summary>
-        /// Get course progress percentage
-   /// </summary>
+
+
         [HttpGet("courses/{courseId}")]
         public async Task<IActionResult> GetCourseProgress(int courseId)
    {
@@ -44,9 +42,8 @@ namespace LearningManagementSystem.API.Controllers
         return Ok(result);
         }
 
-     /// <summary>
-    /// Get last accessed lesson in a course
-   /// </summary>
+
+
   [HttpGet("courses/{courseId}/last-lesson")]
 public async Task<IActionResult> GetLastAccessedLesson(int courseId)
         {
@@ -63,3 +60,4 @@ public async Task<IActionResult> GetLastAccessedLesson(int courseId)
     }
     }
 }
+

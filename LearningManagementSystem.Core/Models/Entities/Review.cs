@@ -10,8 +10,8 @@ namespace LearningManagementSystem.Core.Models.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
 
-        // Navigation Properties
         public Course Course { get; set; } = null!;
         public User Student { get; set; } = null!;
     }
 }
+

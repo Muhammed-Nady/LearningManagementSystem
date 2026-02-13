@@ -11,3 +11,4 @@ namespace LearningManagementSystem.Core.DTOs.Auth
         public UserRole Role { get; set; } = UserRole.Student;
     }
 }
+
