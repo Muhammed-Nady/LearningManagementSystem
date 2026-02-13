@@ -1,5 +1,4 @@
-## Copilot instructions file
-.copilot-instructions.md
+
 
 ## Visual Studio cache/options directory
 .vs/
@@ -32,3 +31,7 @@ x64/
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
+
+.copilot-instructions.md
+*.md
+*.ps1
