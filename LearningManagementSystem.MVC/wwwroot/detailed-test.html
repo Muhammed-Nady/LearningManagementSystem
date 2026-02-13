@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS & API Test</title>
+ <style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+     .success { color: green; }
+        .error { color: red; }
+   .warning { color: orange; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        button { padding: 10px 20px; font-size: 16px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>LMS API & CORS Diagnostic</h1>
+    
+    <h2>Test 1: Fetch Courses from API</h2>
+    <button onclick="testCourses()">Test /api/courses</button>
+    <div id="coursesResult"></div>
+
+    <h2>Test 2: Fetch Categories from API</h2>
+    <button onclick="testCategories()">Test /api/categories</button>
+    <div id="categoriesResult"></div>
+
+    <h2>Test 3: Check CORS Headers</h2>
+<button onclick="checkCORS()">Check CORS</button>
+    <div id="corsResult"></div>
+
+    <script>
+const API_BASE = 'https://localhost:7059/api';
+
+        async function testCourses() {
+        const resultDiv = document.getElementById('coursesResult');
+       resultDiv.innerHTML = '<p>Testing...</p>';
+
+    try {
+    console.log('Fetching from:', `${API_BASE}/courses`);
+                const response = await fetch(`${API_BASE}/courses`);
+         console.log('Response status:', response.status);
+            console.log('Response headers:', [...response.headers.entries()]);
+
+             if (response.ok) {
+const data = await response.json();
+           console.log('Response data:', data);
+
+              if (data.success && data.data) {
+        resultDiv.innerHTML = `
+   <p class="success">? SUCCESS!</p>
+  <p>Courses received: ${data.data.length}</p>
+  <p>Sample courses:</p>
+         <ul>
+ ${data.data.slice(0, 3).map(c => `<li>${c.title} - $${c.price}</li>`).join('')}
+            </ul>
+         <details>
+       <summary>Full Response (click to expand)</summary>
+  <pre>${JSON.stringify(data, null, 2)}</pre>
+   </details>
+        `;
+     } else {
+          resultDiv.innerHTML = `
+         <p class="warning">? API responded but data is invalid</p>
+          <pre>${JSON.stringify(data, null, 2)}</pre>
+       `;
+                 }
+                } else {
+            const text = await response.text();
+        resultDiv.innerHTML = `
+              <p class="error">? API returned error ${response.status}</p>
+   <pre>${text}</pre>
+        `;
+         }
+     } catch (error) {
+                console.error('Fetch error:', error);
+ resultDiv.innerHTML = `
+        <p class="error">? FAILED TO CONNECT</p>
+            <p><strong>Error:</strong> ${error.message}</p>
+           <p><strong>This means:</strong></p>
+  <ul>
+  <li>CORS is blocking the request, OR</li>
+      <li>API is not running, OR</li>
+       <li>SSL certificate error</li>
+    </ul>
+          <p><strong>Check browser console (F12) for detailed error</strong></p>
+                `;
+            }
+        }
+
+   async function testCategories() {
+  const resultDiv = document.getElementById('categoriesResult');
+  resultDiv.innerHTML = '<p>Testing...</p>';
+
+            try {
+    const response = await fetch(`${API_BASE}/categories`);
+
+                if (response.ok) {
+                const data = await response.json();
+
+         if (data.success && data.data) {
+       resultDiv.innerHTML = `
+           <p class="success">? SUCCESS!</p>
+        <p>Categories received: ${data.data.length}</p>
+      <ul>
+    ${data.data.map(c => `<li>${c.name}</li>`).join('')}
+   </ul>
+   `;
+        } else {
+     resultDiv.innerHTML = `
+        <p class="warning">? API responded but data is invalid</p>
+    <pre>${JSON.stringify(data, null, 2)}</pre>
+           `;
+        }
+                } else {
+      const text = await response.text();
+          resultDiv.innerHTML = `
+    <p class="error">? API returned error ${response.status}</p>
+      <pre>${text}</pre>
+          `;
+ }
+            } catch (error) {
+      resultDiv.innerHTML = `
+         <p class="error">? FAILED: ${error.message}</p>
+                `;
+}
+ }
+
+        async function checkCORS() {
+  const resultDiv = document.getElementById('corsResult');
+   resultDiv.innerHTML = '<p>Testing...</p>';
+
+      try {
+ const response = await fetch(`${API_BASE}/courses`);
+                const corsHeaders = {
+  'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+         'Access-Control-Allow-Methods': response.headers.get('Access-Control-Allow-Methods'),
+         'Access-Control-Allow-Headers': response.headers.get('Access-Control-Allow-Headers')
+     };
+
+     resultDiv.innerHTML = `
+  <p class="success">? CORS headers present</p>
+             <pre>${JSON.stringify(corsHeaders, null, 2)}</pre>
+             <p><strong>Current origin:</strong> ${window.location.origin}</p>
+          ${corsHeaders['Access-Control-Allow-Origin'] === '*' || corsHeaders['Access-Control-Allow-Origin'] === window.location.origin
+     ? '<p class="success">? Origin is allowed</p>'
+   : '<p class="error">? Origin might not be allowed</p>'
+     }
+      `;
+  } catch (error) {
+  resultDiv.innerHTML = `
+    <p class="error">? CORS check failed</p>
+         <p>${error.message}</p>
+       <p><strong>Likely cause:</strong> CORS is blocking the request</p>
+  `;
+            }
+      }
+
+        // Auto-run tests on load
+        window.addEventListener('load', () => {
+      console.log('Current origin:', window.location.origin);
+            console.log('API base:', API_BASE);
+     });
+    </script>
+</body>
+</html>

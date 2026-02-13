@@ -14,8 +14,9 @@ private readonly IConfiguration _configuration;
         public AdminController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
   {
     _httpClient = httpClientFactory.CreateClient();
-   _configuration = configuration;
-   _httpClient.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7000/api");
+ _configuration = configuration;
+   // FIX: Update port to 7059 and ensure trailing slash
+   _httpClient.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/");
      }
 
         private void SetAuthorizationHeader()
@@ -34,10 +35,10 @@ private readonly IConfiguration _configuration;
 
 try
      {
-  // Get all users
-  var usersResponse = await _httpClient.GetAsync("/users");
-       var coursesResponse = await _httpClient.GetAsync("/courses");
-   var categoriesResponse = await _httpClient.GetAsync("/categories");
+  // Get all users - REMOVED leading slashes
+  var usersResponse = await _httpClient.GetAsync("users");
+ var coursesResponse = await _httpClient.GetAsync("courses");
+   var categoriesResponse = await _httpClient.GetAsync("categories");
 
        var viewModel = new AdminDashboardViewModel();
 
@@ -80,7 +81,8 @@ viewModel.TotalCourses = result?.Data?.Count ?? 0;
 
        try
   {
-      var response = await _httpClient.GetAsync("/users");
+      // REMOVED leading slash
+      var response = await _httpClient.GetAsync("users");
     if (response.IsSuccessStatusCode)
       {
 var content = await response.Content.ReadAsStringAsync();
@@ -104,7 +106,8 @@ var content = await response.Content.ReadAsStringAsync();
 
       try
     {
-   var response = await _httpClient.PostAsync($"/users/{id}/activate", null);
+   // REMOVED leading slash
+   var response = await _httpClient.PostAsync($"users/{id}/activate", null);
   if (response.IsSuccessStatusCode)
        {
     TempData["Success"] = "User activated successfully!";
@@ -128,9 +131,10 @@ public async Task<IActionResult> DeactivateUser(int id)
       {
 SetAuthorizationHeader();
 
-     try
+  try
     {
-   var response = await _httpClient.PostAsync($"/users/{id}/deactivate", null);
+   // REMOVED leading slash
+   var response = await _httpClient.PostAsync($"users/{id}/deactivate", null);
      if (response.IsSuccessStatusCode)
 {
      TempData["Success"] = "User deactivated successfully!";
@@ -155,7 +159,8 @@ SetAuthorizationHeader();
 
     try
    {
-        var response = await _httpClient.GetAsync("/categories");
+        // REMOVED leading slash
+  var response = await _httpClient.GetAsync("categories");
    if (response.IsSuccessStatusCode)
   {
      var content = await response.Content.ReadAsStringAsync();
@@ -184,7 +189,8 @@ return View(new List<CategoryDto>());
      var json = JsonSerializer.Serialize(dto);
  var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-   var response = await _httpClient.PostAsync("/categories", content);
+   // REMOVED leading slash
+   var response = await _httpClient.PostAsync("categories", content);
     if (response.IsSuccessStatusCode)
       {
         TempData["Success"] = "Category created successfully!";
@@ -209,8 +215,9 @@ else
      SetAuthorizationHeader();
 
      try
-          {
-var response = await _httpClient.DeleteAsync($"/categories/{id}");
+   {
+// REMOVED leading slash
+var response = await _httpClient.DeleteAsync($"categories/{id}");
     if (response.IsSuccessStatusCode)
       {
    TempData["Success"] = "Category deleted successfully!";

@@ -31,6 +31,9 @@ namespace LearningManagementSystem.API
             // CORS Configuration
      ConfigureCors(builder);
 
+   // Response Caching & Compression
+    ConfigurePerformance(builder);
+
     // API Controllers
             builder.Services.AddControllers();
 
@@ -48,10 +51,32 @@ namespace LearningManagementSystem.API
       private static void ConfigureDatabase(WebApplicationBuilder builder)
       {
             builder.Services.AddDbContext<ApplicationDbContext>(
- options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+ options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection"),
+ sqlOptions =>
+       {
+     sqlOptions.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(5), errorNumbersToAdd: null);
+ sqlOptions.CommandTimeout(30);
+      }
+  ));
         }
 
-        private static void ConfigureRepositories(WebApplicationBuilder builder)
+  private static void ConfigurePerformance(WebApplicationBuilder builder)
+      {
+     // Response Caching
+  builder.Services.AddResponseCaching();
+      
+  // Response Compression
+      builder.Services.AddResponseCompression(options =>
+     {
+ options.EnableForHttps = true;
+      });
+
+     // Memory Cache
+     builder.Services.AddMemoryCache();
+  }
+
+   private static void ConfigureRepositories(WebApplicationBuilder builder)
    {
   builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -163,11 +188,17 @@ namespace LearningManagementSystem.API
 
             app.UseHttpsRedirection();
 
-          var corsSettings = app.Configuration.GetSection("Cors");
-        app.UseCors(corsSettings["PolicyName"] ?? "AllowMvcClient");
+   // Enable response compression
+   app.UseResponseCompression();
 
-            app.UseAuthentication();
-    app.UseAuthorization();
+   // Enable response caching
+  app.UseResponseCaching();
+
+  var corsSettings = app.Configuration.GetSection("Cors");
+            app.UseCors(corsSettings["PolicyName"] ?? "AllowMvcClient");
+
+          app.UseAuthentication();
+app.UseAuthorization();
 
             app.MapControllers();
         }

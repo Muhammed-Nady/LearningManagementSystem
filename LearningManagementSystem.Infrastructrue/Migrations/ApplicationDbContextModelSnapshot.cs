@@ -44,6 +44,57 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2798),
+                            Description = "Learn web technologies and frameworks",
+                            Name = "Web Development"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2801),
+                            Description = "Build mobile applications",
+                            Name = "Mobile Development"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2802),
+                            Description = "Master data analysis and machine learning",
+                            Name = "Data Science"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2803),
+                            Description = "Learn cloud platforms and services",
+                            Name = "Cloud Computing"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2804),
+                            Description = "CI/CD and infrastructure automation",
+                            Name = "DevOps"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2806),
+                            Description = "UI/UX and graphic design",
+                            Name = "Design"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2807),
+                            Description = "Management and entrepreneurship",
+                            Name = "Business"
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Course", b =>
@@ -97,6 +148,204 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                     b.HasIndex("InstructorId");
 
                     b.ToTable("Courses");
+
+                    b.HasData(
+                        new
+                        {
+                            CourseId = 1,
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2853),
+                            Description = "Master React.js by building real-world projects. Learn hooks, context API, Redux, and modern React patterns.",
+                            Duration = 40,
+                            InstructorId = 2,
+                            IsPublished = true,
+                            Level = 2,
+                            Price = 89.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+                            Title = "Complete React Developer Course"
+                        },
+                        new
+                        {
+                            CourseId = 2,
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2857),
+                            Description = "Build robust RESTful APIs with ASP.NET Core, Entity Framework, and JWT authentication.",
+                            Duration = 35,
+                            InstructorId = 2,
+                            IsPublished = true,
+                            Level = 3,
+                            Price = 99.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80",
+                            Title = "ASP.NET Core Web API Development"
+                        },
+                        new
+                        {
+                            CourseId = 3,
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2859),
+                            Description = "Learn Node.js, Express, MongoDB, and React to become a full-stack developer.",
+                            Duration = 60,
+                            InstructorId = 3,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 129.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&q=80",
+                            Title = "Full-Stack JavaScript Bootcamp"
+                        },
+                        new
+                        {
+                            CourseId = 4,
+                            CategoryId = 2,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2861),
+                            Description = "Build native iOS applications using Swift and SwiftUI. From basics to App Store deployment.",
+                            Duration = 45,
+                            InstructorId = 3,
+                            IsPublished = true,
+                            Level = 2,
+                            Price = 94.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
+                            Title = "iOS App Development with Swift"
+                        },
+                        new
+                        {
+                            CourseId = 5,
+                            CategoryId = 2,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2921),
+                            Description = "Create beautiful cross-platform mobile apps with Flutter. One codebase for iOS and Android.",
+                            Duration = 50,
+                            InstructorId = 4,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 84.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+                            Title = "Flutter & Dart - Complete Guide"
+                        },
+                        new
+                        {
+                            CourseId = 6,
+                            CategoryId = 3,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2924),
+                            Description = "Learn Python, NumPy, Pandas, Matplotlib, Scikit-Learn, and build ML models.",
+                            Duration = 55,
+                            InstructorId = 4,
+                            IsPublished = true,
+                            Level = 2,
+                            Price = 119.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                            Title = "Python for Data Science and Machine Learning"
+                        },
+                        new
+                        {
+                            CourseId = 7,
+                            CategoryId = 3,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2926),
+                            Description = "Master neural networks, CNNs, RNNs, and transformers using TensorFlow and Keras.",
+                            Duration = 48,
+                            InstructorId = 2,
+                            IsPublished = true,
+                            Level = 3,
+                            Price = 139.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+                            Title = "Deep Learning with TensorFlow"
+                        },
+                        new
+                        {
+                            CourseId = 8,
+                            CategoryId = 4,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2929),
+                            Description = "Prepare for AWS certification and learn cloud architecture best practices.",
+                            Duration = 42,
+                            InstructorId = 3,
+                            IsPublished = true,
+                            Level = 2,
+                            Price = 109.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+                            Title = "AWS Certified Solutions Architect"
+                        },
+                        new
+                        {
+                            CourseId = 9,
+                            CategoryId = 4,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2932),
+                            Description = "Get started with Azure services, deployment, and cloud solutions.",
+                            Duration = 30,
+                            InstructorId = 2,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 69.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
+                            Title = "Microsoft Azure Fundamentals"
+                        },
+                        new
+                        {
+                            CourseId = 10,
+                            CategoryId = 5,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2934),
+                            Description = "Containerize applications and orchestrate them with Kubernetes in production.",
+                            Duration = 38,
+                            InstructorId = 4,
+                            IsPublished = true,
+                            Level = 3,
+                            Price = 99.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
+                            Title = "Docker and Kubernetes Mastery"
+                        },
+                        new
+                        {
+                            CourseId = 11,
+                            CategoryId = 6,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2936),
+                            Description = "Learn user interface and experience design principles using Figma.",
+                            Duration = 28,
+                            InstructorId = 3,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 59.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+                            Title = "UI/UX Design Fundamentals"
+                        },
+                        new
+                        {
+                            CourseId = 12,
+                            CategoryId = 7,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2938),
+                            Description = "Master SEO, social media marketing, email campaigns, and analytics.",
+                            Duration = 32,
+                            InstructorId = 2,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 74.99m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                            Title = "Digital Marketing Masterclass"
+                        },
+                        new
+                        {
+                            CourseId = 13,
+                            CategoryId = 3,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2942),
+                            Description = "Start your coding journey with Python. Perfect for absolute beginners.",
+                            Duration = 20,
+                            InstructorId = 4,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 0m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+                            Title = "Introduction to Programming with Python"
+                        },
+                        new
+                        {
+                            CourseId = 14,
+                            CategoryId = 5,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2944),
+                            Description = "Learn version control with Git and collaborate using GitHub.",
+                            Duration = 15,
+                            InstructorId = 3,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 0m,
+                            ThumbnailUrl = "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&q=80",
+                            Title = "Git and GitHub Essentials"
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Enrollment", b =>
@@ -133,6 +382,45 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                         .IsUnique();
 
                     b.ToTable("Enrollments");
+
+                    b.HasData(
+                        new
+                        {
+                            EnrollmentId = 1,
+                            CourseId = 1,
+                            EnrolledAt = new DateTime(2026, 1, 13, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3063),
+                            ProgressPercentage = 45.5m,
+                            Status = 1,
+                            StudentId = 5
+                        },
+                        new
+                        {
+                            EnrollmentId = 2,
+                            CourseId = 3,
+                            EnrolledAt = new DateTime(2026, 1, 23, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3073),
+                            ProgressPercentage = 20.0m,
+                            Status = 1,
+                            StudentId = 5
+                        },
+                        new
+                        {
+                            EnrollmentId = 3,
+                            CourseId = 1,
+                            EnrolledAt = new DateTime(2026, 1, 28, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3074),
+                            ProgressPercentage = 60.0m,
+                            Status = 1,
+                            StudentId = 6
+                        },
+                        new
+                        {
+                            EnrollmentId = 4,
+                            CompletedAt = new DateTime(2026, 2, 10, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3076),
+                            CourseId = 13,
+                            EnrolledAt = new DateTime(2026, 2, 2, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3076),
+                            ProgressPercentage = 100.0m,
+                            Status = 2,
+                            StudentId = 6
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Lesson", b =>
@@ -177,6 +465,44 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                     b.HasIndex("SectionId");
 
                     b.ToTable("Lessons");
+
+                    b.HasData(
+                        new
+                        {
+                            LessonId = 1,
+                            ContentType = 1,
+                            ContentUrl = "https://example.com/videos/react-intro",
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3031),
+                            Duration = 15,
+                            IsFree = true,
+                            OrderIndex = 1,
+                            SectionId = 1,
+                            Title = "Introduction to React"
+                        },
+                        new
+                        {
+                            LessonId = 2,
+                            ContentType = 1,
+                            ContentUrl = "https://example.com/videos/components-props",
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3033),
+                            Duration = 20,
+                            IsFree = false,
+                            OrderIndex = 2,
+                            SectionId = 1,
+                            Title = "Components and Props"
+                        },
+                        new
+                        {
+                            LessonId = 3,
+                            ContentType = 1,
+                            ContentUrl = "https://example.com/videos/state-lifecycle",
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3035),
+                            Duration = 25,
+                            IsFree = false,
+                            OrderIndex = 3,
+                            SectionId = 1,
+                            Title = "State and Lifecycle"
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Progress", b =>
@@ -210,6 +536,35 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                         .IsUnique();
 
                     b.ToTable("ProgressRecords");
+
+                    b.HasData(
+                        new
+                        {
+                            ProgressId = 1,
+                            CompletedAt = new DateTime(2026, 2, 7, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3109),
+                            IsCompleted = true,
+                            LastAccessedAt = new DateTime(2026, 2, 7, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3108),
+                            LessonId = 1,
+                            StudentId = 5
+                        },
+                        new
+                        {
+                            ProgressId = 2,
+                            CompletedAt = new DateTime(2026, 2, 9, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3111),
+                            IsCompleted = true,
+                            LastAccessedAt = new DateTime(2026, 2, 9, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3110),
+                            LessonId = 2,
+                            StudentId = 5
+                        },
+                        new
+                        {
+                            ProgressId = 3,
+                            CompletedAt = new DateTime(2026, 2, 8, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3112),
+                            IsCompleted = true,
+                            LastAccessedAt = new DateTime(2026, 2, 8, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3112),
+                            LessonId = 1,
+                            StudentId = 6
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Review", b =>
@@ -246,6 +601,35 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                         .IsUnique();
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            ReviewId = 1,
+                            Comment = "Excellent course! Very well structured and easy to follow.",
+                            CourseId = 1,
+                            CreatedAt = new DateTime(2026, 2, 5, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3140),
+                            Rating = 5,
+                            StudentId = 6
+                        },
+                        new
+                        {
+                            ReviewId = 2,
+                            Comment = "Great content, but could use more practical examples.",
+                            CourseId = 3,
+                            CreatedAt = new DateTime(2026, 2, 7, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3142),
+                            Rating = 4,
+                            StudentId = 5
+                        },
+                        new
+                        {
+                            ReviewId = 3,
+                            Comment = "Perfect for beginners! Highly recommended.",
+                            CourseId = 13,
+                            CreatedAt = new DateTime(2026, 2, 10, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(3143),
+                            Rating = 5,
+                            StudentId = 6
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Section", b =>
@@ -278,6 +662,35 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Sections");
+
+                    b.HasData(
+                        new
+                        {
+                            SectionId = 1,
+                            CourseId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2996),
+                            Description = "Learn the basics of React",
+                            OrderIndex = 1,
+                            Title = "React Fundamentals"
+                        },
+                        new
+                        {
+                            SectionId = 2,
+                            CourseId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2998),
+                            Description = "Master advanced concepts",
+                            OrderIndex = 2,
+                            Title = "Advanced React Patterns"
+                        },
+                        new
+                        {
+                            SectionId = 3,
+                            CourseId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(2999),
+                            Description = "Learn Redux for complex apps",
+                            OrderIndex = 3,
+                            Title = "State Management with Redux"
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.User", b =>
@@ -325,6 +738,74 @@ namespace LearningManagementSystem.Infrastructrue.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 299, DateTimeKind.Utc).AddTicks(1414),
+                            Email = "admin@lms.com",
+                            FirstName = "System",
+                            IsActive = true,
+                            LastName = "Administrator",
+                            PasswordHash = "$2a$11$j.4/EqcFmNr1RSnBWZaazOH5R2fjMtdtm0QmtoGgh.QjnK3MQV0Mu",
+                            Role = 1
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 414, DateTimeKind.Utc).AddTicks(4518),
+                            Email = "john.smith@lms.com",
+                            FirstName = "John",
+                            IsActive = true,
+                            LastName = "Smith",
+                            PasswordHash = "$2a$11$vk8m0hkKQzEenZG08bDQRuPwqavKPQsp9xzB3XOGXJOv./BAquUtG",
+                            Role = 2
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 528, DateTimeKind.Utc).AddTicks(9264),
+                            Email = "sarah.johnson@lms.com",
+                            FirstName = "Sarah",
+                            IsActive = true,
+                            LastName = "Johnson",
+                            PasswordHash = "$2a$11$NjpWxJGga3NObmPY5JPRBemZny2Gc.QsFKYbC.QTmcT5tIxRhTtPG",
+                            Role = 2
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 644, DateTimeKind.Utc).AddTicks(1711),
+                            Email = "michael.chen@lms.com",
+                            FirstName = "Michael",
+                            IsActive = true,
+                            LastName = "Chen",
+                            PasswordHash = "$2a$11$90j8wYv4DPR8H66P1CrdEerISFGaeNaaZxfmEmQvTuYafP5e0Mea2",
+                            Role = 2
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 759, DateTimeKind.Utc).AddTicks(7294),
+                            Email = "emma.davis@student.com",
+                            FirstName = "Emma",
+                            IsActive = true,
+                            LastName = "Davis",
+                            PasswordHash = "$2a$11$lGkGl184HzmVxKc3MDtzD.rHflD6yM9ljYjC2mUYtEuAqemtx.jM2",
+                            Role = 3
+                        },
+                        new
+                        {
+                            UserId = 6,
+                            CreatedAt = new DateTime(2026, 2, 12, 14, 11, 38, 875, DateTimeKind.Utc).AddTicks(1835),
+                            Email = "james.wilson@student.com",
+                            FirstName = "James",
+                            IsActive = true,
+                            LastName = "Wilson",
+                            PasswordHash = "$2a$11$AxUl0tM8IPkqG9E5N4X/aeGsnksjFyJdjjTFpGJZEY9BeEebE5Upm",
+                            Role = 3
+                        });
                 });
 
             modelBuilder.Entity("LearningManagementSystem.Core.Models.Entities.Course", b =>

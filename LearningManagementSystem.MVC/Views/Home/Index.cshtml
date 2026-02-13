@@ -1,54 +1,202 @@
-﻿@{
+﻿@model LearningManagementSystem.MVC.Models.HomeViewModel
+@{
     ViewData["Title"] = "Home";
 }
 
-<div class="bg-light py-5">
-    <div class="container text-center">
-        <h1 class="display-5 fw-bold">Learn Anything, Anytime</h1>
-        <p class="lead text-muted mb-4">High-quality courses from expert instructors. Start learning today.</p>
-        <div class="d-flex justify-content-center gap-2">
-            <a class="btn btn-primary btn-lg" asp-controller="Courses" asp-action="Index">Browse Courses</a>
-            <a class="btn btn-outline-primary btn-lg" asp-controller="Account" asp-action="Register">Get Started</a>
+<!-- Enhanced Hero Section -->
+<div class="hero-section text-white text-center">
+    <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-12">
+          <div class="fade-in">
+      <h1 class="display-1 fw-bold mb-4">
+     Learn Anything,<br />
+       <span style="background: linear-gradient(to right, #ffffff, #e0e7ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Anytime, Anywhere</span>
+    </h1>
+    <p class="lead fs-3 mb-5 mx-auto" style="max-width: 700px; line-height: 1.6;">
+          Unlock your potential with world-class courses from industry experts. Start your learning journey today.
+     </p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+    <a asp-controller="Courses" asp-action="Index" class="btn btn-primary btn-lg px-5 py-3" style="font-size: 1.25rem;">
+   <i class="bi bi-play-circle-fill me-2"></i>Explore Courses
+   </a>
+   <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary btn-lg px-5 py-3" style="font-size: 1.25rem; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.5);">
+      <i class="bi bi-person-plus-fill me-2"></i>Get Started Free
+      </a>
+    </div>
+
+       <!-- Stats -->
+    <div class="row mt-5 pt-4 justify-content-center">
+       <div class="col-md-3 col-6 mb-3">
+       <div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+        <h3 class="fw-bold mb-0">@Model.FeaturedCourses.Count+</h3>
+         <p class="mb-0 small">Active Courses</p>
+   </div>
+ </div>
+    <div class="col-md-3 col-6 mb-3">
+    <div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+       <h3 class="fw-bold mb-0">10k+</h3>
+  <p class="mb-0 small">Students Learning</p>
+   </div>
+           </div>
+  <div class="col-md-3 col-6 mb-3">
+     <div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+    <h3 class="fw-bold mb-0">500+</h3>
+<p class="mb-0 small">Expert Instructors</p>
+   </div>
+</div>
+      <div class="col-md-3 col-6 mb-3">
+<div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+ <h3 class="fw-bold mb-0">4.8★</h3>
+      <p class="mb-0 small">Average Rating</p>
+      </div>
+    </div>
+        </div>
+      </div>
+        </div>
         </div>
     </div>
 </div>
 
-<div class="container my-5">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="h4">Featured Courses</h2>
-        <a asp-controller="Courses" asp-action="Index" class="small">View all courses &rarr;</a>
+@if (ViewBag.Error != null)
+{
+    <div class="container my-4">
+ <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            @ViewBag.Error
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+    </div>
+}
+
+<!-- Featured Courses Section -->
+<div class="container my-5 py-4">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+         <h2 class="display-5 fw-bold mb-3" style="color: var(--text-primary);">Featured Courses</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">
+          Handpicked courses to help you achieve your learning goals
+ </p>
+        </div>
+  </div>
+
+ @if (Model.FeaturedCourses.Any())
+    {
+     <div class="row g-4 mb-5">
+         @foreach (var course in Model.FeaturedCourses.Take(6))
+       {
+   <div class="col-lg-4 col-md-6">
+    <partial name="_CourseCard" model="course" />
+    </div>
+   }
+      </div>
+
+        <div class="text-center">
+          <a asp-controller="Courses" asp-action="Index" class="btn btn-outline-primary btn-lg px-5">
+ View All Courses <i class="bi bi-arrow-right ms-2"></i>
+ </a>
+      </div>
+    }
+    else
+    {
+      <div class="text-center py-5">
+ <div class="mb-4">
+<i class="bi bi-inbox" style="font-size: 5rem; color: var(--neutral-300);"></i>
+            </div>
+    <h4 class="mb-3" style="color: var(--text-secondary);">No courses available yet</h4>
+      <p class="text-muted">Check back soon for exciting new courses!</p>
+    </div>
+    }
+</div>
+
+<!-- Features Section -->
+<div class="py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);">
+    <div class="container py-4">
+  <div class="row mb-5">
+   <div class="col-12 text-center">
+      <h2 class="display-5 fw-bold mb-3" style="color: var(--text-primary);">Why Choose Our Platform?</h2>
+       <p class="lead text-muted">Everything you need for a successful learning experience</p>
+       </div>
+  </div>
+
+   <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+  <div class="card h-100 border-0 text-center p-4">
+         <div class="mb-3">
+      <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+     style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+      <i class="bi bi-play-circle-fill text-white" style="font-size: 2.5rem;"></i>
+     </div>
+ </div>
+           <h5 class="fw-bold mb-3">Learn at Your Pace</h5>
+      <p class="text-muted small">Access courses anytime, anywhere. Learn on your schedule.</p>
+   </div>
+        </div>
+
+  <div class="col-lg-3 col-md-6">
+           <div class="card h-100 border-0 text-center p-4">
+        <div class="mb-3">
+               <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+       style="width: 80px; height: 80px; background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+      <i class="bi bi-people-fill text-white" style="font-size: 2.5rem;"></i>
+       </div>
+    </div>
+        <h5 class="fw-bold mb-3">Expert Instructors</h5>
+             <p class="text-muted small">Learn from industry professionals with years of experience.</p>
+  </div>
+ </div>
+
+      <div class="col-lg-3 col-md-6">
+     <div class="card h-100 border-0 text-center p-4">
+       <div class="mb-3">
+ <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+    style="width: 80px; height: 80px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+  <i class="bi bi-award-fill text-white" style="font-size: 2.5rem;"></i>
+    </div>
+         </div>
+    <h5 class="fw-bold mb-3">Get Certified</h5>
+    <p class="text-muted small">Earn recognized certificates upon course completion.</p>
+      </div>
     </div>
 
-    <div class="row g-3">
-        @if (Model?.FeaturedCourses?.Any() ?? false)
-        {
-            foreach (var course in Model.FeaturedCourses.Take(6))
-            {
-                <div class="col-12 col-md-6 col-lg-4">
-                    <partial name="_CourseCard" model="course" />
-                </div>
-            }
-        }
-        else
-        {
-            <div class="col-12 text-muted">No courses available yet.</div>
-        }
-    </div>
-
-    <div class="mt-5">
-        <h3 class="h5 mb-3">Browse by Category</h3>
-        <div class="d-flex flex-wrap gap-2">
-            @if (Model?.Categories?.Any() ?? false)
-            {
-                foreach (var cat in Model.Categories)
-                {
-                    <a class="badge bg-secondary text-decoration-none text-white py-2 px-3" asp-controller="Courses" asp-action="Index" asp-route-category="@cat.CategoryId">@cat.Name</a>
-                }
-            }
-            else
-            {
-                <div class="text-muted">No categories yet.</div>
-            }
+<div class="col-lg-3 col-md-6">
+     <div class="card h-100 border-0 text-center p-4">
+      <div class="mb-3">
+   <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+            style="width: 80px; height: 80px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+      <i class="bi bi-graph-up-arrow text-white" style="font-size: 2.5rem;"></i>
+        </div>
+         </div>
+ <h5 class="fw-bold mb-3">Track Progress</h5>
+       <p class="text-muted small">Monitor your learning journey with detailed analytics.</p>
+       </div>
+       </div>
         </div>
     </div>
 </div>
+
+<!-- Categories Section -->
+@if (Model.Categories.Any())
+{
+    <div class="container my-5 py-4">
+ <div class="row mb-4">
+     <div class="col-12 text-center">
+      <h2 class="display-5 fw-bold mb-3" style="color: var(--text-primary);">Explore Categories</h2>
+        <p class="lead text-muted">Find courses in your area of interest</p>
+  </div>
+     </div>
+
+        <div class="row g-3 justify-content-center">
+    @foreach (var category in Model.Categories)
+         {
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+       <a asp-controller="Courses" asp-action="Index" asp-route-category="@category.CategoryId" 
+      class="btn btn-outline-primary w-100 py-3 rounded-3" style="border-width: 2px;">
+      <i class="bi bi-folder-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+       <span class="d-block fw-semibold">@category.Name</span>
+</a>
+ </div>
+   }
+  </div>
+    </div>
+}

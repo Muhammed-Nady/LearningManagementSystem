@@ -7,9 +7,31 @@ const AUTH_CONFIG = {
     USER_KEY: 'lms_user_data'
 };
 
-// Get stored token
+// Cookie helper functions
+function setCookie(name, value, days = 7) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+  return null;
+}
+
+function deleteCookie(name) {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+}
+
+// Get stored token (check both localStorage and cookie)
 function getToken() {
-    return localStorage.getItem(AUTH_CONFIG.TOKEN_KEY);
+    return localStorage.getItem(AUTH_CONFIG.TOKEN_KEY) || getCookie('AuthToken');
 }
 
 // Get stored user data
@@ -18,17 +40,33 @@ function getUser() {
     return userData ? JSON.parse(userData) : null;
 }
 
-// Save authentication data
+// Save authentication data (to both localStorage AND cookies)
 function saveAuth(token, userData) {
+    // Save to localStorage (for JavaScript access)
     localStorage.setItem(AUTH_CONFIG.TOKEN_KEY, token);
     localStorage.setItem(AUTH_CONFIG.USER_KEY, JSON.stringify(userData));
+    
+  // Save to cookies (for server-side access)
+    setCookie('AuthToken', token, 7); // 7 days expiry
+    setCookie('UserRole', userData.role, 7);
+    setCookie('UserEmail', userData.email, 7);
+    setCookie('UserName', userData.firstName, 7);
+    
     updateNavigation();
 }
 
-// Clear authentication data
+// Clear authentication data (from both localStorage AND cookies)
 function clearAuth() {
-    localStorage.removeItem(AUTH_CONFIG.TOKEN_KEY);
+    // Clear localStorage
+  localStorage.removeItem(AUTH_CONFIG.TOKEN_KEY);
     localStorage.removeItem(AUTH_CONFIG.USER_KEY);
+    
+    // Clear cookies
+    deleteCookie('AuthToken');
+    deleteCookie('UserRole');
+    deleteCookie('UserEmail');
+    deleteCookie('UserName');
+    
     updateNavigation();
 }
 
@@ -40,7 +78,7 @@ function isAuthenticated() {
 // Get current user role
 function getUserRole() {
     const user = getUser();
-    return user ? user.role : null;
+    return user ? user.role : (getCookie('UserRole') || null);
 }
 
 // Logout function
@@ -68,38 +106,38 @@ function updateNavigation() {
     const navInstructorDashboard = document.getElementById('navInstructorDashboard');
     const navAdminDashboard = document.getElementById('navAdminDashboard');
 
-  if (isAuth && user) {
+    if (isAuth) {
         // Show authenticated elements
         if (navLogin) navLogin.classList.add('d-none');
         if (navRegister) navRegister.classList.add('d-none');
         if (navUserMenu) navUserMenu.classList.remove('d-none');
-        if (userName) userName.textContent = user.firstName || 'User';
+      if (userName) userName.textContent = (user?.firstName || getCookie('UserName') || 'User');
 
         // Show/hide role-specific dashboard links
-        if (navStudentDashboard) {
+ if (navStudentDashboard) {
     userRole === 'Student' ? navStudentDashboard.classList.remove('d-none') : navStudentDashboard.classList.add('d-none');
         }
-        if (navInstructorDashboard) {
-  userRole === 'Instructor' ? navInstructorDashboard.classList.remove('d-none') : navInstructorDashboard.classList.add('d-none');
-        }
-  if (navAdminDashboard) {
+if (navInstructorDashboard) {
+   userRole === 'Instructor' ? navInstructorDashboard.classList.remove('d-none') : navInstructorDashboard.classList.add('d-none');
+      }
+        if (navAdminDashboard) {
             userRole === 'Admin' ? navAdminDashboard.classList.remove('d-none') : navAdminDashboard.classList.add('d-none');
-        }
+   }
 
-        // Show/hide dropdown menu items based on role
-  document.querySelectorAll('.role-student').forEach(el => {
-         userRole === 'Student' ? el.classList.remove('d-none') : el.classList.add('d-none');
-     });
- document.querySelectorAll('.role-instructor').forEach(el => {
-   userRole === 'Instructor' ? el.classList.remove('d-none') : el.classList.add('d-none');
+     // Show/hide dropdown menu items based on role
+    document.querySelectorAll('.role-student').forEach(el => {
+      userRole === 'Student' ? el.classList.remove('d-none') : el.classList.add('d-none');
+  });
+      document.querySelectorAll('.role-instructor').forEach(el => {
+            userRole === 'Instructor' ? el.classList.remove('d-none') : el.classList.add('d-none');
         });
-        document.querySelectorAll('.role-admin').forEach(el => {
- userRole === 'Admin' ? el.classList.remove('d-none') : el.classList.add('d-none');
-});
+document.querySelectorAll('.role-admin').forEach(el => {
+      userRole === 'Admin' ? el.classList.remove('d-none') : el.classList.add('d-none');
+        });
     } else {
-        // Show non-authenticated elements
+  // Show non-authenticated elements
         if (navLogin) navLogin.classList.remove('d-none');
-        if (navRegister) navRegister.classList.remove('d-none');
+    if (navRegister) navRegister.classList.remove('d-none');
         if (navUserMenu) navUserMenu.classList.add('d-none');
         if (navStudentDashboard) navStudentDashboard.classList.add('d-none');
         if (navInstructorDashboard) navInstructorDashboard.classList.add('d-none');
@@ -116,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function requireAuth() {
     if (!isAuthenticated()) {
         window.location.href = '/account/login?returnUrl=' + encodeURIComponent(window.location.pathname);
-    return false;
+     return false;
     }
     return true;
 }
@@ -128,8 +166,8 @@ function requireRole(requiredRole) {
     const userRole = getUserRole();
     if (userRole !== requiredRole) {
         alert('Access denied. You do not have permission to access this page.');
-     window.location.href = '/';
-    return false;
+        window.location.href = '/';
+     return false;
     }
     return true;
 }
@@ -147,7 +185,7 @@ function isTokenExpired() {
 async function refreshTokenIfNeeded() {
     if (isAuthenticated() && isTokenExpired()) {
         console.log('Token expired, please login again');
-      clearAuth();
+    clearAuth();
         window.location.href = '/account/login';
     }
 }

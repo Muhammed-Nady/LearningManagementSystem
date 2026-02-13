@@ -12,6 +12,11 @@ namespace LearningManagementSystem.Core.Interfaces
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
         Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null);
 
+        // Read operations with includes (for eager loading)
+        Task<T?> GetByIdWithIncludesAsync(int id, params Expression<Func<T, object>>[] includes);
+        Task<IEnumerable<T>> GetAllWithIncludesAsync(params Expression<Func<T, object>>[] includes);
+        Task<IEnumerable<T>> FindWithIncludesAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
+
         // Write operations
         Task<T> AddAsync(T entity);
         Task AddRangeAsync(IEnumerable<T> entities);

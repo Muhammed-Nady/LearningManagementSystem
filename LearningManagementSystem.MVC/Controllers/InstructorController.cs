@@ -15,7 +15,8 @@ namespace LearningManagementSystem.MVC.Controllers
  {
        _httpClient = httpClientFactory.CreateClient();
   _configuration = configuration;
-    _httpClient.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7000/api");
+    // FIX: Update port to 7059 and ensure trailing slash
+    _httpClient.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/");
    }
 
  private void SetAuthorizationHeader()
@@ -34,8 +35,8 @@ namespace LearningManagementSystem.MVC.Controllers
   
  try
    {
-      // Get instructor's courses
-   var response = await _httpClient.GetAsync("/courses/instructor/me");
+      // Get instructor's courses - REMOVED leading slash
+   var response = await _httpClient.GetAsync("courses/instructor/me");
        if (response.IsSuccessStatusCode)
         {
   var content = await response.Content.ReadAsStringAsync();
@@ -60,11 +61,12 @@ namespace LearningManagementSystem.MVC.Controllers
      // GET: My Courses
   public async Task<IActionResult> MyCourses()
         {
-         SetAuthorizationHeader();
+      SetAuthorizationHeader();
     
  try
     {
-     var response = await _httpClient.GetAsync("/courses/instructor/me");
+     // REMOVED leading slash
+     var response = await _httpClient.GetAsync("courses/instructor/me");
    if (response.IsSuccessStatusCode)
         {
        var content = await response.Content.ReadAsStringAsync();
@@ -96,45 +98,55 @@ public async Task<IActionResult> CreateCourse()
        if (!ModelState.IsValid)
        {
      await LoadCategories();
-      return View(model);
+   return View(model);
        }
 
           SetAuthorizationHeader();
 
     try
   {
-   var dto = new
-            {
-title = model.Title,
-    description = model.Description,
-   categoryId = model.CategoryId,
-thumbnailUrl = model.ThumbnailUrl,
-     duration = model.Duration,
-     level = model.Level,
-price = model.Price
-    };
+    // Convert level string to CourseLevel enum value
+        int levelValue = model.Level switch
+        {
+    "Beginner" => 1,
+      "Intermediate" => 2,
+            "Advanced" => 3,
+            _ => 1 // Default to Beginner
+        };
 
-    var json = JsonSerializer.Serialize(dto);
-    var content = new StringContent(json, Encoding.UTF8, "application/json");
+  var dto = new
+        {
+  title = model.Title,
+   description = model.Description,
+            categoryId = model.CategoryId,
+   thumbnailUrl = model.ThumbnailUrl,
+            duration = model.Duration,
+            level = levelValue,  // Send as integer, not string
+          price = model.Price
+        };
 
-    var response = await _httpClient.PostAsync("/courses", content);
+        var json = JsonSerializer.Serialize(dto);
+  var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-   if (response.IsSuccessStatusCode)
-      {
-      TempData["Success"] = "Course created successfully!";
-       return RedirectToAction(nameof(MyCourses));
+        // REMOVED leading slash
+        var response = await _httpClient.PostAsync("courses", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+    TempData["Success"] = "Course created successfully!";
+            return RedirectToAction(nameof(MyCourses));
         }
 
-     var errorContent = await response.Content.ReadAsStringAsync();
-      ModelState.AddModelError("", "Failed to create course: " + errorContent);
-   }
-      catch (Exception ex)
- {
-  ModelState.AddModelError("", "An error occurred while creating the course");
-}
+        var errorContent = await response.Content.ReadAsStringAsync();
+    ModelState.AddModelError("", "Failed to create course: " + errorContent);
+    }
+    catch (Exception ex)
+    {
+        ModelState.AddModelError("", "An error occurred while creating the course: " + ex.Message);
+    }
 
- await LoadCategories();
-     return View(model);
+    await LoadCategories();
+    return View(model);
   }
 
   // GET: Edit Course
@@ -144,7 +156,8 @@ price = model.Price
 
  try
   {
-   var response = await _httpClient.GetAsync($"/courses/{id}");
+   // REMOVED leading slash
+   var response = await _httpClient.GetAsync($"courses/{id}");
  if (response.IsSuccessStatusCode)
            {
     var content = await response.Content.ReadAsStringAsync();
@@ -181,11 +194,11 @@ IsPublished = result.Data.IsPublished
 
         // POST: Edit Course
         [HttpPost]
-        [ValidateAntiForgeryToken]
+     [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditCourse(EditCourseViewModel model)
      {
  if (!ModelState.IsValid)
-       {
+  {
   await LoadCategories();
           return View(model);
   }
@@ -194,21 +207,31 @@ IsPublished = result.Data.IsPublished
 
    try
   {
-        var dto = new
-     {
-  title = model.Title,
-   description = model.Description,
- categoryId = model.CategoryId,
-  thumbnailUrl = model.ThumbnailUrl,
- duration = model.Duration,
-   level = model.Level,
-  price = model.Price
- };
+      // Convert level string to CourseLevel enum value
+ int levelValue = model.Level switch
+        {
+        "Beginner" => 1,
+   "Intermediate" => 2,
+          "Advanced" => 3,
+    _ => 1 // Default to Beginner
+  };
 
-    var json = JsonSerializer.Serialize(dto);
+  var dto = new
+  {
+    title = model.Title,
+    description = model.Description,
+  categoryId = model.CategoryId,
+      thumbnailUrl = model.ThumbnailUrl,
+  duration = model.Duration,
+level = levelValue,  // Send as integer, not string
+     price = model.Price
+        };
+
+        var json = JsonSerializer.Serialize(dto);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-           var response = await _httpClient.PutAsync($"/courses/{model.CourseId}", content);
+   // REMOVED leading slash
+  var response = await _httpClient.PutAsync($"courses/{model.CourseId}", content);
 
      if (response.IsSuccessStatusCode)
  {
@@ -221,7 +244,7 @@ IsPublished = result.Data.IsPublished
 }
      catch (Exception ex)
  {
-      ModelState.AddModelError("", "An error occurred while updating the course");
+      ModelState.AddModelError("", "An error occurred while updating the course: " + ex.Message);
           }
 
    await LoadCategories();
@@ -235,8 +258,9 @@ public async Task<IActionResult> DeleteCourse(int id)
  SetAuthorizationHeader();
 
  try
-         {
-    var response = await _httpClient.DeleteAsync($"/courses/{id}");
+  {
+    // REMOVED leading slash
+    var response = await _httpClient.DeleteAsync($"courses/{id}");
      if (response.IsSuccessStatusCode)
        {
     TempData["Success"] = "Course deleted successfully!";
@@ -260,12 +284,13 @@ catch (Exception ex)
         {
   SetAuthorizationHeader();
 
-            try
-            {
-  var endpoint = publish ? $"/courses/{id}/publish" : $"/courses/{id}/unpublish";
+      try
+{
+   // REMOVED leading slashes
+  var endpoint = publish ? $"courses/{id}/publish" : $"courses/{id}/unpublish";
      var response = await _httpClient.PostAsync(endpoint, null);
 
-        if (response.IsSuccessStatusCode)
+  if (response.IsSuccessStatusCode)
   {
       TempData["Success"] = publish ? "Course published successfully!" : "Course unpublished successfully!";
       }
@@ -287,9 +312,10 @@ catch (Exception ex)
         {
    SetAuthorizationHeader();
 
-            try
+       try
     {
-         var response = await _httpClient.GetAsync($"/courses/{id}");
+    // REMOVED leading slash
+         var response = await _httpClient.GetAsync($"courses/{id}");
  if (response.IsSuccessStatusCode)
  {
              var content = await response.Content.ReadAsStringAsync();
@@ -312,8 +338,9 @@ if (result?.Data != null)
         private async Task LoadCategories()
   {
      try
-       {
-   var response = await _httpClient.GetAsync("/categories");
+  {
+   // REMOVED leading slash
+   var response = await _httpClient.GetAsync("categories");
    if (response.IsSuccessStatusCode)
        {
  var content = await response.Content.ReadAsStringAsync();

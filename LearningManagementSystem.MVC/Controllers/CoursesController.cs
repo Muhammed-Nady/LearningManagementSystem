@@ -21,8 +21,8 @@ namespace LearningManagementSystem.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int? category, string? level, string? search)
         {
-            var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7000/api";
-            var client = _httpClientFactory.CreateClient("ApiClient");
+            var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/";
+            var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(apiBase);
 
             var model = new CoursesIndexViewModel
@@ -35,7 +35,7 @@ namespace LearningManagementSystem.MVC.Controllers
             try
             {
                 // Fetch courses
-                var coursesResponse = await client.GetAsync("/courses");
+                var coursesResponse = await client.GetAsync("courses");
                 if (coursesResponse.IsSuccessStatusCode)
                 {
                     var json = await coursesResponse.Content.ReadAsStringAsync();
@@ -50,7 +50,7 @@ namespace LearningManagementSystem.MVC.Controllers
                 }
 
                 // Fetch categories
-                var categoriesResponse = await client.GetAsync("/categories");
+                var categoriesResponse = await client.GetAsync("categories");
                 if (categoriesResponse.IsSuccessStatusCode)
                 {
                     var json = await categoriesResponse.Content.ReadAsStringAsync();
@@ -98,16 +98,23 @@ namespace LearningManagementSystem.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7000/api";
-            var client = _httpClientFactory.CreateClient("ApiClient");
+            // FIX: Ensure trailing slash for proper URL construction
+            var apiBase = _configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7059/api/";
+            var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(apiBase);
 
             try
             {
-                var response = await client.GetAsync($"/courses/{id}");
+                _logger.LogInformation("Fetching course details for ID: {CourseId} from {ApiBase}", id, apiBase);
+
+                var response = await client.GetAsync($"courses/{id}");
+                _logger.LogInformation("Course details API response: {StatusCode}", response.StatusCode);
+
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
+                    _logger.LogInformation("Course details JSON length: {Length}", json.Length);
+
                     var doc = JsonDocument.Parse(json);
                     if (doc.RootElement.TryGetProperty("data", out var data))
                     {
@@ -128,15 +135,27 @@ namespace LearningManagementSystem.MVC.Controllers
                             AverageRating = data.GetProperty("averageRating").GetDouble()
                         };
 
+                        _logger.LogInformation("Successfully loaded course: {Title}", model.Title);
                         return View(model);
                     }
+                    else
+                    {
+                        _logger.LogWarning("API response does not contain 'data' property");
+                    }
+                }
+                else
+                {
+                    _logger.LogError("Course details API returned error: {StatusCode}", response.StatusCode);
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    _logger.LogError("Error content: {Content}", errorContent);
                 }
 
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to load course details");
+                _logger.LogError(ex, "Failed to load course details for ID: {CourseId}", id);
+                ViewBag.Error = "Unable to load course details. Please try again later.";
                 return StatusCode(500);
             }
         }

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fix Login Redirect Issue</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         max-width: 800px;
+    margin: 50px auto;
+  padding: 20px;
+    background: #f5f7fa;
+        }
+        .card {
+ background: white;
+  padding: 30px;
+  border-radius: 10px;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+   h1 {
+            color: #2563eb;
+         margin-bottom: 10px;
+        }
+h2 {
+  color: #1e40af;
+            margin-top: 30px;
+        }
+      button {
+            background: #2563eb;
+       color: white;
+            border: none;
+   padding: 12px 24px;
+      border-radius: 6px;
+            cursor: pointer;
+  font-size: 16px;
+       margin: 5px;
+     }
+      button:hover {
+            background: #1d4ed8;
+   }
+        .success {
+   background: #10b981;
+        }
+     .success:hover {
+            background: #059669;
+        }
+        .danger {
+   background: #ef4444;
+        }
+ .danger:hover {
+      background: #dc2626;
+     }
+        .info {
+        background: #f0f9ff;
+    border-left: 4px solid #2563eb;
+     padding: 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+          padding: 15px;
+            margin: 15px 0;
+  }
+    .code {
+     background: #1e293b;
+    color: #e2e8f0;
+            padding: 15px;
+  border-radius: 6px;
+    overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+    #status {
+    margin-top: 20px;
+    padding: 15px;
+       border-radius: 6px;
+    display: none;
+        }
+        .status-success {
+            background: #d1fae5;
+   color: #065f46;
+        }
+     .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+    }
+        .step {
+            background: #f8fafc;
+   padding: 15px;
+            margin: 10px 0;
+    border-left: 4px solid #3b82f6;
+          border-radius: 4px;
+        }
+        .step-number {
+         background: #2563eb;
+      color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        display: inline-flex;
+ align-items: center;
+      justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+      <h1>?? Fix: Login Redirect Issue</h1>
+        <p>This tool will fix the issue where you're redirected to login even when signed in.</p>
+      
+        <div class="warning">
+       <strong>?? Important:</strong> You will need to login again after running this fix!
+    </div>
+
+    <h2>What's Wrong?</h2>
+    <div class="info">
+  <p><strong>Problem:</strong> Authentication token is only stored in localStorage, but the server needs it in cookies.</p>
+            <p><strong>Result:</strong> Server thinks you're not logged in ? redirects to login page</p>
+        </div>
+
+        <h2>The Fix (3 Steps)</h2>
+
+        <div class="step">
+  <span class="step-number">1</span>
+        <strong>Clear Old Auth Data</strong>
+            <p>Remove old localStorage and cookies that don't have the token in cookies.</p>
+     <button onclick="clearAuthData()" class="danger">Clear Auth Data</button>
+        </div>
+
+        <div class="step">
+    <span class="step-number">2</span>
+         <strong>Verify Cleanup</strong>
+            <p>Check if localStorage and cookies are cleared.</p>
+  <button onclick="checkAuthStatus()">Check Status</button>
+        </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+         <strong>Login Again</strong>
+        <p>After clearing data, login again. The new code will save token to BOTH localStorage AND cookies.</p>
+    <button onclick="goToLogin()" class="success">Go to Login Page</button>
+        </div>
+
+      <div id="status"></div>
+
+        <h2>Manual Commands (if needed)</h2>
+        <p>Run these in browser console (F12):</p>
+    <div class="code">
+// Clear localStorage
+localStorage.clear();
+
+// Clear ALL cookies
+document.cookie.split(";").forEach(c => {
+    document.cookie = c.trim().split("=")[0] + 
+  "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+});
+
+// Reload
+location.reload();
+        </div>
+
+        <h2>After Fix</h2>
+        <div class="info">
+  <strong>? Expected Results:</strong>
+            <ul>
+    <li>Can access /Student/Dashboard without redirect</li>
+        <li>Can access /Student/MyCourses without redirect</li>
+   <li>Token persists for 7 days</li>
+    <li>Server-side authorization works</li>
+        </ul>
+        </div>
+    </div>
+
+    <script>
+        function showStatus(message, isSuccess) {
+     const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = isSuccess ? 'status-success' : 'status-error';
+         statusDiv.style.display = 'block';
+        }
+
+        function clearAuthData() {
+   try {
+    // Clear localStorage
+           const localStorageKeys = Object.keys(localStorage);
+      localStorage.clear();
+
+     // Clear cookies
+  let cookieCount = 0;
+    document.cookie.split(";").forEach(cookie => {
+          const name = cookie.trim().split("=")[0];
+     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+          cookieCount++;
+ });
+
+        showStatus(
+          `? Success! Cleared ${localStorageKeys.length} localStorage items and ${cookieCount} cookies. Now click "Check Status" to verify.`,
+           true
+        );
+            } catch (error) {
+      showStatus('? Error: ' + error.message, false);
+         }
+        }
+
+     function checkAuthStatus() {
+            const hasLocalStorage = localStorage.length > 0;
+       const hasCookies = document.cookie.length > 0;
+            
+       let message = '?? Current Status:\n\n';
+        message += `localStorage: ${hasLocalStorage ? '?? Has data (should be empty)' : '? Empty (good!)'}\n`;
+          message += `Cookies: ${hasCookies ? '?? Has cookies' : '? Empty (good!)'}\n\n`;
+            
+  if (!hasLocalStorage && !hasCookies) {
+         message += '? Perfect! Everything is cleared. Now go to login page and login again.';
+        showStatus(message, true);
+            } else {
+    message += '?? Not fully cleared. Try "Clear Auth Data" again.';
+         showStatus(message, false);
+  }
+      }
+
+        function goToLogin() {
+if (confirm('Have you cleared auth data (Step 1)? Click OK to go to login page.')) {
+         window.location.href = '/Account/Login';
+       }
+        }
+
+        // Auto-check on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const info = document.createElement('div');
+            info.className = 'info';
+        info.innerHTML = `
+         <strong>?? Current Browser State:</strong>
+           <ul>
+ <li>localStorage items: ${localStorage.length}</li>
+             <li>Has cookies: ${document.cookie ? 'Yes' : 'No'}</li>
+        <li>Current URL: ${window.location.href}</li>
+   </ul>
+            `;
+          document.querySelector('.card').insertBefore(info, document.querySelector('h2'));
+        });
+    </script>
+</body>
+</html>

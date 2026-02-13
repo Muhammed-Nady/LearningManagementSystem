@@ -142,52 +142,53 @@
 
 @section Scripts {
     <script>
-         const API_BASE = (typeof AUTH_CONFIG !== 'undefined' && AUTH_CONFIG.API_URL) ? AUTH_CONFIG.API_URL : 'https://localhost:7000/api';
+      const API_BASE = (typeof AUTH_CONFIG !== 'undefined' && AUTH_CONFIG.API_URL) ? AUTH_CONFIG.API_URL : 'https://localhost:7059/api';
 
-                // Check authentication and enrollment status
-         document.addEventListener('DOMContentLoaded', function() {
-           const isAuth = isAuthenticated();
-         const enrollBtn = document.getElementById('enrollBtn');
-          const loginBtn = document.getElementById('loginBtn');
+        // Check authentication and enrollment status
+        document.addEventListener('DOMContentLoaded', function() {
+        const isAuth = isAuthenticated();
+            const enrollBtn = document.getElementById('enrollBtn');
+            const loginBtn = document.getElementById('loginBtn');
 
-            if (!isAuth) {
-         enrollBtn.style.display = 'none';
-         loginBtn.style.display = 'block';
+     if (!isAuth) {
+      enrollBtn.style.display = 'none';
+          loginBtn.style.display = 'block';
             }
-           });
+        });
 
-         async function handleEnroll(courseId) {
-         if (!requireAuth()) return;
+        async function handleEnroll(courseId) {
+ if (!requireAuth()) return;
 
-            const token = getToken();
+    const token = getToken();
 
-         const btn = document.getElementById('enrollBtn');
-         btn.disabled = true;
-           btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enrolling...';
+    const btn = document.getElementById('enrollBtn');
+     btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enrolling...';
 
-          try {
-           const response = await fetch(`${API_BASE}/enrollments/${courseId}`, {
-          method: 'POST',
-         headers: {
-               'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-              }
-              });
+   try {
+          const response = await fetch(`${API_BASE}/enrollments/${courseId}`, {
+ method: 'POST',
+        headers: {
+'Authorization': `Bearer ${token}`,
+           'Content-Type': 'application/json'
+       }
+       });
 
-        const result = await response.json();
+              const result = await response.json();
 
-            if (response.ok && result.success) {
-           alert('Successfully enrolled!');
-         window.location.href = '/student/mycourses';
-         } else {
-            alert(result.message || 'Enrollment failed');
-          }
-          } catch (error) {
-             alert('Unable to enroll. Please try again.');
-          } finally {
-           btn.disabled = false;
-        btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Enroll Now';
-            }
-                }
+             if (response.ok && result.success) {
+          alert('Successfully enrolled!');
+   window.location.href = '/student/mycourses';
+             } else {
+       alert(result.message || 'Enrollment failed');
+        }
+            } catch (error) {
+ console.error('Enrollment error:', error);
+      alert('Unable to enroll. Please try again.');
+   } finally {
+    btn.disabled = false;
+         btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Enroll Now';
+      }
+        }
     </script>
 }

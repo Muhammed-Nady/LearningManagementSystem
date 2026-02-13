@@ -9,60 +9,175 @@ namespace LearningManagementSystem.Infrastructrue.Services
 {
     public class CourseService : ICourseService
     {
-        private readonly IUnitOfWork _unitOfWork;
+   private readonly IUnitOfWork _unitOfWork;
 
-        public CourseService(IUnitOfWork unitOfWork)
-        {
+   public CourseService(IUnitOfWork unitOfWork)
+   {
             _unitOfWork = unitOfWork;
         }
 
         public async Task<ResultDto<IEnumerable<CourseResponseDto>>> GetAllPublishedCoursesAsync()
         {
-            var courses = await _unitOfWork.Courses.FindAsync(c => c.IsPublished);
-            var courseDtos = new List<CourseResponseDto>();
+   // Use eager loading to prevent N+1 queries
+     var courses = await _unitOfWork.Courses.FindWithIncludesAsync(
+   c => c.IsPublished,
+  c => c.Instructor,
+ c => c.Category,
+   c => c.Reviews,
+  c => c.Enrollments
+);
 
-            foreach (var course in courses)
-            {
-                courseDtos.Add(await MapToCourseResponseDto(course));
-            }
+          var courseDtos = courses.Select(course => new CourseResponseDto
+     {
+       CourseId = course.CourseId,
+      Title = course.Title,
+   Description = course.Description,
+  InstructorId = course.InstructorId,
+           // Add null-safety check
+InstructorName = course.Instructor != null 
+        ? $"{course.Instructor.FirstName} {course.Instructor.LastName}" 
+    : "Unknown Instructor",
+CategoryId = course.CategoryId,
+           // Add null-safety check
+         CategoryName = course.Category?.Name ?? "Uncategorized",
+     ThumbnailUrl = course.ThumbnailUrl,
+     IsPublished = course.IsPublished,
+Duration = course.Duration,
+  Level = course.Level.ToString(),
+   Price = course.Price,
+     CreatedAt = course.CreatedAt,
+     // Add null-safety check
+  EnrollmentCount = course.Enrollments?.Count ?? 0,
+        // Add null-safety check
+     AverageRating = course.Reviews != null && course.Reviews.Any() 
+        ? course.Reviews.Average(r => r.Rating) 
+                    : 0
+    }).ToList();
 
-            return ResultDto<IEnumerable<CourseResponseDto>>.SuccessResult(courseDtos);
-        }
+   return ResultDto<IEnumerable<CourseResponseDto>>.SuccessResult(courseDtos);
+     }
 
         public async Task<ResultDto<CourseResponseDto>> GetCourseByIdAsync(int courseId)
         {
-            var course = await _unitOfWork.Courses.GetByIdAsync(courseId);
-            if (course == null)
-                return ResultDto<CourseResponseDto>.FailureResult("Course not found");
+   var course = await _unitOfWork.Courses.GetByIdWithIncludesAsync(
+    courseId,
+        c => c.Instructor,
+   c => c.Category,
+  c => c.Reviews,
+       c => c.Enrollments,
+ c => c.Sections
+     );
 
-            var dto = await MapToCourseResponseDto(course);
-            return ResultDto<CourseResponseDto>.SuccessResult(dto);
-        }
+          if (course == null)
+       return ResultDto<CourseResponseDto>.FailureResult("Course not found");
 
-        public async Task<ResultDto<IEnumerable<CourseResponseDto>>> GetCoursesByInstructorAsync(int instructorId)
+         // Handle null navigation properties safely
+            var instructorName = course.Instructor != null 
+    ? $"{course.Instructor.FirstName} {course.Instructor.LastName}" 
+       : "Unknown Instructor";
+
+      var categoryName = course.Category?.Name ?? "Uncategorized";
+
+     var dto = new CourseResponseDto
+         {
+   CourseId = course.CourseId,
+    Title = course.Title,
+   Description = course.Description,
+    InstructorId = course.InstructorId,
+      InstructorName = instructorName,
+         CategoryId = course.CategoryId,
+          CategoryName = categoryName,
+     ThumbnailUrl = course.ThumbnailUrl,
+          IsPublished = course.IsPublished,
+         Duration = course.Duration,
+         Level = course.Level.ToString(),
+         Price = course.Price,
+ CreatedAt = course.CreatedAt,
+     EnrollmentCount = course.Enrollments?.Count ?? 0,
+     AverageRating = course.Reviews != null && course.Reviews.Any() 
+       ? course.Reviews.Average(r => r.Rating) 
+    : 0
+       };
+
+ return ResultDto<CourseResponseDto>.SuccessResult(dto);
+  }
+
+  public async Task<ResultDto<IEnumerable<CourseResponseDto>>> GetCoursesByInstructorAsync(int instructorId)
         {
-            var courses = await _unitOfWork.Courses.FindAsync(c => c.InstructorId == instructorId);
-            var courseDtos = new List<CourseResponseDto>();
+  var courses = await _unitOfWork.Courses.FindWithIncludesAsync(
+   c => c.InstructorId == instructorId,
+   c => c.Instructor,
+ c => c.Category,
+   c => c.Reviews,
+    c => c.Enrollments
+ );
 
-            foreach (var course in courses)
-            {
-                courseDtos.Add(await MapToCourseResponseDto(course));
-            }
+      var courseDtos = courses.Select(course => new CourseResponseDto
+{
+     CourseId = course.CourseId,
+       Title = course.Title,
+Description = course.Description,
+     InstructorId = course.InstructorId,
+        // Add null-safety check
+InstructorName = course.Instructor != null 
+    ? $"{course.Instructor.FirstName} {course.Instructor.LastName}" 
+   : "Unknown Instructor",
+   CategoryId = course.CategoryId,
+           // Add null-safety check
+CategoryName = course.Category?.Name ?? "Uncategorized",
+   ThumbnailUrl = course.ThumbnailUrl,
+  IsPublished = course.IsPublished,
+        Duration = course.Duration,
+     Level = course.Level.ToString(),
+     Price = course.Price,
+CreatedAt = course.CreatedAt,
+  // Add null-safety checks
+EnrollmentCount = course.Enrollments?.Count ?? 0,
+   AverageRating = course.Reviews != null && course.Reviews.Any() 
+   ? course.Reviews.Average(r => r.Rating) 
+     : 0
+ }).ToList();
 
-            return ResultDto<IEnumerable<CourseResponseDto>>.SuccessResult(courseDtos);
+   return ResultDto<IEnumerable<CourseResponseDto>>.SuccessResult(courseDtos);
         }
 
         public async Task<ResultDto<IEnumerable<CourseResponseDto>>> GetCoursesByCategoryAsync(int categoryId)
-        {
-            var courses = await _unitOfWork.Courses.FindAsync(c => c.CategoryId == categoryId && c.IsPublished);
-            var courseDtos = new List<CourseResponseDto>();
+  {
+       var courses = await _unitOfWork.Courses.FindWithIncludesAsync(
+       c => c.CategoryId == categoryId && c.IsPublished,
+c => c.Instructor,
+         c => c.Category,
+      c => c.Reviews,
+      c => c.Enrollments
+  );
 
-            foreach (var course in courses)
-            {
-                courseDtos.Add(await MapToCourseResponseDto(course));
-            }
+   var courseDtos = courses.Select(course => new CourseResponseDto
+     {
+   CourseId = course.CourseId,
+       Title = course.Title,
+      Description = course.Description,
+ InstructorId = course.InstructorId,
+        // Add null-safety check
+InstructorName = course.Instructor != null 
+        ? $"{course.Instructor.FirstName} {course.Instructor.LastName}" 
+    : "Unknown Instructor",
+CategoryId = course.CategoryId,
+       // Add null-safety check
+CategoryName = course.Category?.Name ?? "Uncategorized",
+  ThumbnailUrl = course.ThumbnailUrl,
+   IsPublished = course.IsPublished,
+  Duration = course.Duration,
+ Level = course.Level.ToString(),
+ Price = course.Price,
+  CreatedAt = course.CreatedAt,
+       // Add null-safety checks
+    EnrollmentCount = course.Enrollments?.Count ?? 0,
+     AverageRating = course.Reviews != null && course.Reviews.Any() 
+    ? course.Reviews.Average(r => r.Rating) 
+  : 0
+  }).ToList();
 
-            return ResultDto<IEnumerable<CourseResponseDto>>.SuccessResult(courseDtos);
+  return ResultDto<IEnumerable<CourseResponseDto>>.SuccessResult(courseDtos);
         }
 
         public async Task<ResultDto<CourseResponseDto>> CreateCourseAsync(CreateCourseDto dto, int instructorId)
