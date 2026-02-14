@@ -104,19 +104,6 @@ Contains views, controllers, and client-side interactions.
 
 ---
 
-## Future Improvements
-
-* Implement JWT-based authentication
-* Add unit and integration testing
-* Introduce centralized logging and monitoring
-* Add pagination and filtering support
-* Implement caching strategies
-* Containerize the application using Docker
-* Set up continuous integration and deployment pipelines
-* Introduce intelligent features such as recommendation systems
-
----
-
 ## Purpose
 
 The primary goal of this project is to demonstrate the design and implementation of a layered application that reflects real-world software development practices. It serves as a learning platform for understanding backend architecture and as a portfolio project that showcases engineering skills.
